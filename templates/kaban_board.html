@@ -40,7 +40,7 @@
                 <p><strong>Team:</strong> {{ team }}</p>
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Search tasks...">
+                <input type="text" id="searchBox" class="form-control" placeholder="Search tasks...">
             </div>
         </div>
 
@@ -61,5 +61,31 @@
             {% endfor %}
         </div>
     </div>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector("#searchBox");
+    
+            searchInput.addEventListener("input", function () {
+                const searchTerm = this.value.toLowerCase();
+                const cards = document.querySelectorAll(".kanban-card");
+    
+                cards.forEach(card => {
+                    const title = card.querySelector("strong").textContent.toLowerCase();
+                    const description = card.querySelector("small").textContent.toLowerCase();
+    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+    
 </body>
 </html>
