@@ -175,4 +175,7 @@ cython_debug/
 
 
 .DS_Store
-_site
+_site/*
+!_site/.gitkeep
+
+
