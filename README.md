@@ -4,8 +4,9 @@ Hackathon project: CLI tool to generate static planning view of issues for bette
 # Getting Started
 ## Requirements and Setup
 The following items are required to run the program.
+- Python 3.x
 - Python `pyenv` and `pyenv-virtualenv`
-  -  brew install pyenv pyenv-virtualenv
+  -  `brew install pyenv pyenv-virtualenv`
 - GitHub Command Line Interface (CLI) `gh`
 - Authentication through `gh auth login`
 
