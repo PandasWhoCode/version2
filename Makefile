@@ -22,4 +22,6 @@ install:
 	pyenv virtualenv $(PYTHON_VERSION) $(VENV_NAME)
 	@echo "Setting local pyenv version to $(VENV_NAME)..."
 	pyenv local $(VENV_NAME)
+	@echo "Installing project dependencies..."
+	pip install -r requirements.txt
 	@echo "Done. Virtualenv $(VENV_NAME) is ready."
