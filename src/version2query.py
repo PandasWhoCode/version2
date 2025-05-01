@@ -77,15 +77,15 @@ class Version2Query:
       all_projects.extend(projects)
     return all_projects
 
-  def filter_projects_by_team(self, project_list:list[dict], teams:list[str]) -> list[dict]:
+  def filter_projects_by_project_name(self, project_list:list[dict], project_names:list[str]) -> list[dict]:
     """Filter the project list by team names."""
 
     filtered_projects:list[dict] = []
-    for team in teams:
-      matching_projects:list[dict] = [p for p in project_list if team.lower() in p["title"].lower()]
+    for pname in project_names:
+      matching_projects:list[dict] = [p for p in project_list if pname.lower() in p["title"].lower()]
 
       filtered_projects.extend(matching_projects)
-      print(f"[green]Found {len(matching_projects)} matching projects for team '{team}'[/green]")
+      print(f"[green]Found {len(matching_projects)} matching projects for project '{pname}'[/green]")
     return filtered_projects
 
   def filter_items_by_user(self) -> None:
@@ -195,15 +195,15 @@ class Version2Query:
       print("[red]No projects found. Exiting...[/red]")
       return False
 
-    # filter by team names
+    # filter by project names
     filtered_projects = all_projects
-    if self.filters.include_teams is not None:
-      teams = self.filters.include_teams
-      filtered_projects_by_teams = self.filter_projects_by_team(all_projects, teams)
-      if not filtered_projects_by_teams:
-        print("[red]No projects found matching the team names. Exiting...[/red]")
+    if self.filters.include_projects is not None:
+      project_names = self.filters.include_projects
+      filtered_projects_by_project_name = self.filter_projects_by_project_name(all_projects, project_names)
+      if not filtered_projects_by_project_name:
+        print("[red]No projects found matching the project names. Exiting...[/red]")
         return False
-      filtered_projects = filtered_projects_by_teams
+      filtered_projects = filtered_projects_by_project_name
 
     if not self.fetch_project_items(filtered_projects):
       print("[red]Failed to fetch project items. Exiting...[/red]")
