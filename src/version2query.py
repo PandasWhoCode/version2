@@ -117,6 +117,7 @@ def consolidate_items() -> bool:
   rv:bool = True
   all_items = []
   try:
+    [print(f) for f in TEMP_DIR.glob("*.items.json")]
     for file in TEMP_DIR.glob("*.items.json"):
       with open(file) as f:
         data = json.load(f)
@@ -156,6 +157,9 @@ def main():
   """The primary method for the version2query.py script."""
   teams:list = input("Enter team name(s) to filter projects: ").split(" ")
   
+  if TEMP_DIR.exists():
+    cleanup()
+
   if not teams:
     print("[red]No team names provided. Exiting...[/red]")
     return
