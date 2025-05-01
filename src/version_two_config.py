@@ -13,12 +13,14 @@ class VersionTwoConfig:
             "--include-repository",
             dest="include_repository",
             action="append_const",
+            nargs="+",
             help="Include all issues and PRs from the specified repository",)
 
         parser.add_argument(
             "--include-organization-repository",
             dest="include_organization_repository",
             action="append_const",
+            nargs="+",
             help="Include all issues and PRs from the specified "
                  "organization/repository",)
 
@@ -26,30 +28,36 @@ class VersionTwoConfig:
             "--include-user",
             dest="include_user",
             action="append_const",
-            help="Include all issues and PRs for the provided user",)
+            nargs="+",
+            help="Include all issues and PRs for the provided user",
+            required=True,)
 
         parser.add_argument(
             "--include-label",
             dest="include_label",
             action="append_const",
+            nargs="+",
             help="Include all issues and PRs with the specified label",)
 
         parser.add_argument(
             "--exclude-organization",
             dest="exclude_organization",
             action="append_const",
+            nargs="+",
             help="Exclude all issues and PRs from the specified organization",)
 
         parser.add_argument(
             "--exclude-repository",
             dest="exclude_repository",
             action="append_const",
+            nargs="+",
             help="Exclude all issues and PRs from the specified repository",)
 
         parser.add_argument(
             "--exclude-organization-repository",
             dest="exclude_organization_repository",
             action="append_const",
+            nargs="+",
             help="Exclude all issues and PRs from the specified "
                  "organization/repository",)
 
@@ -57,18 +65,20 @@ class VersionTwoConfig:
             "--exclude-user",
             dest="exclude_user",
             action="append_const",
+            nargs="+",
             help="Exclude all issues and PRs for the provided user",)
 
         parser.add_argument(
             "--exclude-label",
             dest="exclude_label",
             action="append_const",
+            nargs="+",
             help="Exclude all issues and PRs with the specified label",)
 
         parser.add_argument(
             "--publish-board",
             dest="publish_board",
-            action="append_const",
+            action="store_const",
             help="The organization/board to publish (add) the collection of "
                  "GitHub Issues and Pull Requests",)
 
