@@ -16,6 +16,7 @@ The following items are required to run the program.
   -  `brew install pyenv pyenv-virtualenv`
 - GitHub Command Line Interface (CLI) `gh`
 - Authentication through `gh auth login`
+  - Set the appropriate token permissions: `gh auth refresh --scopes read:project`
 
 Run `make install` inside the repo directory to configure the appropriate versions of dependencies.
 
