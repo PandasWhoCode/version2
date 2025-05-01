@@ -161,7 +161,7 @@ class VersionTwoConfig:
 
         self.output_file = parsed_args.output_file
         self.temp_dir = parsed_args.temp_dir
-        self.project = parsed_args.include_project
+        self.include_project = parsed_args.include_project
         self.include_user = parsed_args.include_user
         self.include_repository = parsed_args.include_repository
         self.include_organization = parsed_args.include_organization
