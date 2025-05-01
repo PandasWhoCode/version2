@@ -184,3 +184,7 @@ def main():
     return
   
   cleanup()
+
+
+if __name__ == "__main__":
+  main()
