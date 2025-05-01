@@ -3,7 +3,7 @@ import json
 
 # Example data
 seed_data = {
-    'title': 'Version Two',
+    'title': 'Version2',
     'github_user': 'octocat',
     'team': 'Platform Engineering',
     'tasks': []
