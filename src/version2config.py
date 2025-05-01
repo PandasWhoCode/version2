@@ -116,7 +116,7 @@ class VersionTwoConfig:
         logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
     
     def load_env(self):
-        self.GITHUB_PAT = getattr("GITHUB_PAT")
+        self.GITHUB_PAT = os.getenv("GITHUB_PAT") if os.getenv("GITHUB_PAT") else None
 
     def display_config(self):
         logging.info("Configuration:")
