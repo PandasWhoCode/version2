@@ -20,6 +20,24 @@ class VersionTwoConfig:
         )
 
         parser.add_argument(
+            "--output-file",
+            dest="output_file",
+            action="store",
+            type=str,
+            default="output.projects.json",
+            help="The output file to write the json data to"
+        )
+
+        parser.add_argument(
+          "--temp-dir",
+          dest="temp_dir",
+          action="store",
+          type=str,
+          default="tmp.dir",
+          help="The temporary directory to store the json data files",
+        )
+
+        parser.add_argument(
             "--include-user",
             dest="include_user",
             action="append",
@@ -28,11 +46,26 @@ class VersionTwoConfig:
             help="Include all issues and PRs for the provided user [Required Parameter]",)
 
         parser.add_argument(
+          "--include-team",
+          dest="include_team",
+          action="append",
+          type=str,
+          help="Include provided teams in the output"
+        )
+
+        parser.add_argument(
+          "--exclude-team",
+          dest="exclude_team",
+          action="append",
+          type=str,
+          help="Exclude provided teams in the output"
+        )
+
+        parser.add_argument(
             "--include-repository",
             dest="include_repository",
             action="append",
             type=str,
-            nargs="+",
             help="Include all issues and PRs from the specified repository",)
 
         parser.add_argument(
@@ -40,7 +73,6 @@ class VersionTwoConfig:
             dest="include_organization_repository",
             action="append",
             type=str,
-            nargs="+",
             help="Include all issues and PRs from the specified organization/repository",)
 
         parser.add_argument(
@@ -48,7 +80,6 @@ class VersionTwoConfig:
             dest="include_label",
             action="append",
             type=str,
-            nargs="+",
             help="Include all issues and PRs with the specified label",)
 
         parser.add_argument(
@@ -56,7 +87,6 @@ class VersionTwoConfig:
             dest="exclude_organization",
             action="append",
             type=str,
-            nargs="+",
             help="Exclude all issues and PRs from the specified organization",)
 
         parser.add_argument(
@@ -64,7 +94,6 @@ class VersionTwoConfig:
             dest="exclude_repository",
             action="append",
             type=str,
-            nargs="+",
             help="Exclude all issues and PRs from the specified repository",)
 
         parser.add_argument(
@@ -72,7 +101,6 @@ class VersionTwoConfig:
             dest="exclude_organization_repository",
             action="append",
             type=str,
-            nargs="+",
             help="Exclude all issues and PRs from the specified "
                  "organization/repository",)
 
@@ -81,7 +109,6 @@ class VersionTwoConfig:
             dest="exclude_user",
             action="append",
             type=str,
-            nargs="+",
             help="Exclude all issues and PRs for the provided user",)
 
         parser.add_argument(
@@ -89,7 +116,6 @@ class VersionTwoConfig:
             dest="exclude_label",
             action="append",
             type=str,
-            nargs="+",
             help="Exclude all issues and PRs with the specified label",)
 
         parser.add_argument(
@@ -101,6 +127,7 @@ class VersionTwoConfig:
         parsed_args = parser.parse_args()
 
         self.include_user = parsed_args.include_user
+        self.include_team = parsed_args.include_team
         self.include_repository = parsed_args.include_repository
         self.include_organization_repository = parsed_args.include_organization_repository
         self.include_label = parsed_args.include_label
@@ -109,8 +136,10 @@ class VersionTwoConfig:
         self.exclude_organization_repository = parsed_args.exclude_organization_repository
         self.exclude_user = parsed_args.exclude_user
         self.exclude_label = parsed_args.exclude_label
+        self.exclude_team = parsed_args.exclude_team
         self.publish_board = parsed_args.publish_board
-
+        self.output_file = parsed_args.output_file
+        self.temp_dir = parsed_args.temp_dir
 
     def init_logger(self):
         logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
@@ -120,13 +149,17 @@ class VersionTwoConfig:
 
     def display_config(self):
         logging.info("Configuration:")
+        logging.info(f"Output File: {self.output_file}")
+        logging.info(f"Temporary Directory: {self.temp_dir}")
         logging.info(f"Include User: {self.include_user}")
         logging.info(f"Include Repository: {self.include_repository}")
         logging.info(f"Include Organization/Repository: {self.include_organization_repository}")
         logging.info(f"Include Label: {self.include_label}")
+        logging.info(f"Include Team: {self.include_team}")
         logging.info(f"Exclude Organization: {self.exclude_organization}")
         logging.info(f"Exclude Repository: {self.exclude_repository}")
         logging.info(f"Exclude Organization/Repository: {self.exclude_organization_repository}")
         logging.info(f"Exclude User: {self.exclude_user}")
         logging.info(f"Exclude Label: {self.exclude_label}")
+        logging.info(f"Exclude Team: {self.exclude_team}")
         logging.info(f"Publish Board: {self.publish_board}")
