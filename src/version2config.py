@@ -16,7 +16,8 @@ class VersionTwoConfig:
     def init_parser(self):
         parser = argparse.ArgumentParser(
             prog='VersionTwo',
-            description="Render an HTML page from a collection of GitHub Issues and Pull Requests",)
+            description="Render an HTML page from a collection of GitHub Issues and Pull Requests"
+        )
 
         parser.add_argument(
             "--output-file",
@@ -24,7 +25,8 @@ class VersionTwoConfig:
             action="store",
             type=str,
             default="output.projects.json",
-            help="The output file to write the json data to",)
+            help="The output file to write the json data to"
+        )
 
         parser.add_argument(
           "--temp-dir",
@@ -32,14 +34,16 @@ class VersionTwoConfig:
           action="store",
           type=str,
           default="tmp.dir",
-          help="The temporary directory to store the json data files",)
+          help="The temporary directory to store the json data files"
+        )
 
         parser.add_argument(
             "--include-team",
             dest="include_team",
             action="append",
             type=str,
-            help="Include provided teams in the output",)
+            help="Include provided teams in the output"
+        )
 
         parser.add_argument(
             "--include-user",
@@ -47,63 +51,72 @@ class VersionTwoConfig:
             action="append",
             type=str,
             nargs="+",
-            help="Include all issues and PRs for the provided user [Required Parameter]",)
+            help="Include all issues and PRs for the provided user [Required Parameter]"
+        )
 
         parser.add_argument(
             "--include-repository",
             dest="include_repository",
             action="append",
             type=str,
-            help="Include all issues and PRs from the specified repository",)
+            help="Include all issues and PRs from the specified repository"
+        )
 
         parser.add_argument(
             "--include-organization",
             dest="include_organization",
             action="append",
             type=str,
-            help="Include all issues and PRs from the specified organization",)
+            help="Include all issues and PRs from the specified organization"
+        )
 
         parser.add_argument(
             "--include-organization-repository",
             dest="include_organization_repository",
             action="append",
             type=str,
-            help="Include all issues and PRs from the specified organization/repository",)
+            help="Include all issues and PRs from the specified organization/repository"
+        )
 
         parser.add_argument(
             "--include-label",
             dest="include_label",
             action="append",
             type=str,
-            help="Include all issues and PRs with the specified label",)
+            help="Include all issues and PRs with the specified label"
+        )
 
         parser.add_argument(
             "--exclude-team",
             dest="exclude_team",
             action="append",
             type=str,
-            help="Exclude provided teams in the output",)
+            help="Exclude provided teams in the output"
+        )
 
         parser.add_argument(
             "--exclude-user",
             dest="exclude_user",
             action="append",
             type=str,
-            help="Exclude all issues and PRs for the provided user",)
+            help="Exclude all issues and PRs for the provided user"
+        )
 
         parser.add_argument(
             "--exclude-repository",
             dest="exclude_repository",
             action="append",
             type=str,
-            help="Exclude all issues and PRs from the specified repository",)
+            help="Exclude all issues and PRs from the specified repository"
+        )
 
         parser.add_argument(
             "--exclude-organization",
             dest="exclude_organization",
             action="append",
             type=str,
-            help="Exclude all issues and PRs from the specified organization",)
+            help="Exclude all issues and PRs from the specified organization"
+        )
 
         parser.add_argument(
             "--exclude-organization-repository",
@@ -111,20 +124,23 @@ class VersionTwoConfig:
             action="append",
             type=str,
             help="Exclude all issues and PRs from the specified "
-                 "organization/repository",)
+                 "organization/repository"
+        )
 
         parser.add_argument(
             "--exclude-label",
             dest="exclude_label",
             action="append",
             type=str,
-            help="Exclude all issues and PRs with the specified label",)
+            help="Exclude all issues and PRs with the specified label"
+        )
 
         parser.add_argument(
             "--publish-board",
             dest="publish_board",
             action="store_const",
-            help="The organization/board to publish (add) the collection of GitHub Issues and Pull Requests",)
+            help="The organization/board to publish (add) the collection of GitHub Issues and Pull Requests"
+        )
 
         parsed_args = parser.parse_args()
 
