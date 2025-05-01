@@ -2,7 +2,9 @@
 
 ## Currently Implemented
 
-- `include-by-team` - Filter by team is implemented
+- `include-team` - Include a team to the query
+- `exclude-team` - Exclude a team from the query
+- `output-file` - Define the filename and location of the output file
 
 ## To Be Implemented
 
