@@ -34,7 +34,7 @@ pygmentsStyle: tango
 
 # Configure how URLs look like per section.
 permalinks:
-  blog: /:section/:year/:month/:day/:slug/
+  # blog: /:section/:year/:month/:day/:slug/
 
 # Image processing configuration.
 imaging:
@@ -75,7 +75,7 @@ markup:
 
 # Comment out if you don't want the "print entire section" link enabled.
 outputs:
-  section: [HTML, print, RSS]
+  section: [HTML, print]
 
 params:
   taxonomy:
