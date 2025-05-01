@@ -1,8 +1,19 @@
 import argparse
-
+import logging
+import os
 
 class VersionTwoConfig:
+    
+    # LOGGER VARIABLES
+    LOG_LEVEL = logging.INFO
+    LOG_FORMAT = '%(asctime)s - %(levelname)s - %(message)s'
+
     def __init__(self):
+        self.init_parser()
+        self.init_logger()
+        self.load_env()
+
+    def init_parser(self):
         parser = argparse.ArgumentParser(
             prog='VersionTwo',
             description="Render an HTML page from a collection of GitHub Issues and Pull Requests"
@@ -100,15 +111,22 @@ class VersionTwoConfig:
         self.exclude_label = parsed_args.exclude_label
         self.publish_board = parsed_args.publish_board
 
+
+    def init_logger(self):
+        logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
+    
+    def load_env(self):
+        self.GITHUB_PAT = os.getenv("GITHUB_PAT") if os.getenv("GITHUB_PAT") else None
+
     def display_config(self):
-        print("Configuration:")
-        print(f"Include User: {self.include_user}")
-        print(f"Include Repository: {self.include_repository}")
-        print(f"Include Organization/Repository: {self.include_organization_repository}")
-        print(f"Include Label: {self.include_label}")
-        print(f"Exclude Organization: {self.exclude_organization}")
-        print(f"Exclude Repository: {self.exclude_repository}")
-        print(f"Exclude Organization/Repository: {self.exclude_organization_repository}")
-        print(f"Exclude User: {self.exclude_user}")
-        print(f"Exclude Label: {self.exclude_label}")
-        print(f"Publish Board: {self.publish_board}")
+        logging.info("Configuration:")
+        logging.info(f"Include User: {self.include_user}")
+        logging.info(f"Include Repository: {self.include_repository}")
+        logging.info(f"Include Organization/Repository: {self.include_organization_repository}")
+        logging.info(f"Include Label: {self.include_label}")
+        logging.info(f"Exclude Organization: {self.exclude_organization}")
+        logging.info(f"Exclude Repository: {self.exclude_repository}")
+        logging.info(f"Exclude Organization/Repository: {self.exclude_organization_repository}")
+        logging.info(f"Exclude User: {self.exclude_user}")
+        logging.info(f"Exclude Label: {self.exclude_label}")
+        logging.info(f"Publish Board: {self.publish_board}")

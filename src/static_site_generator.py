@@ -1,23 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 
-def generate_site(data, output_file='./_site/index.html'):
-    env = Environment(loader=FileSystemLoader('templates'))
-    template = env.get_template('kaban_board.html')
-    
-    # Extract unique statuses from the tasks list
-    unique_statuses = sorted({task["status"] for task in data["tasks"]})
-    
-    # Add statuses to the data dictionary
-    data_with_statuses = {**data, "statuses": unique_statuses}
-    
-    # Render template with updated data
-    output = template.render(data_with_statuses)
-    
-    with open(output_file, 'w') as f:
-        f.write(output)
-
 # Example data
-data = {
+dummy_data = {
     'title': 'Version Two',
     'github_user': 'octocat',
     'team': 'Platform Engineering',
@@ -110,4 +94,19 @@ data = {
     ]
 }
 
-generate_site(data)
+def generate_site(data=dummy_data, output_file='./_site/index.html'):
+    env = Environment(loader=FileSystemLoader('templates'))
+    template = env.get_template('kaban_board.html')
+    
+    # Extract unique statuses from the tasks list
+    unique_statuses = sorted({task["status"] for task in data["tasks"]})
+    
+    # Add statuses to the data dictionary
+    data_with_statuses = {**data, "statuses": unique_statuses}
+    
+    # Render template with updated data
+    output = template.render(data_with_statuses)
+    
+    with open(output_file, 'w') as f:
+        f.write(output)
+
