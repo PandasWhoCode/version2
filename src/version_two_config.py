@@ -5,58 +5,64 @@ class VersionTwoConfig:
     def __init__(self):
         parser = argparse.ArgumentParser(
             prog='VersionTwo',
-            description="Render an HTML page from a collection of GitHub Issues"
-                        "and Pull Requests",
+            description="Render an HTML page from a collection of GitHub Issues and Pull Requests, "
+                        "NOTE: `--include-user GITHUB_USER_ID` is a required parameter",
         )
+
+        parser.add_argument(
+            "--include-user",
+            dest="include_user",
+            action="append",
+            type=str,
+            nargs="+",
+            help="Include all issues and PRs for the provided user [Required Parameter]",
+            required=True,)
 
         parser.add_argument(
             "--include-repository",
             dest="include_repository",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Include all issues and PRs from the specified repository",)
 
         parser.add_argument(
             "--include-organization-repository",
             dest="include_organization_repository",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
-            help="Include all issues and PRs from the specified "
-                 "organization/repository",)
-
-        parser.add_argument(
-            "--include-user",
-            dest="include_user",
-            action="append_const",
-            nargs="+",
-            help="Include all issues and PRs for the provided user",
-            required=True,)
+            help="Include all issues and PRs from the specified organization/repository",)
 
         parser.add_argument(
             "--include-label",
             dest="include_label",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Include all issues and PRs with the specified label",)
 
         parser.add_argument(
             "--exclude-organization",
             dest="exclude_organization",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Exclude all issues and PRs from the specified organization",)
 
         parser.add_argument(
             "--exclude-repository",
             dest="exclude_repository",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Exclude all issues and PRs from the specified repository",)
 
         parser.add_argument(
             "--exclude-organization-repository",
             dest="exclude_organization_repository",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Exclude all issues and PRs from the specified "
                  "organization/repository",)
@@ -64,14 +70,16 @@ class VersionTwoConfig:
         parser.add_argument(
             "--exclude-user",
             dest="exclude_user",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Exclude all issues and PRs for the provided user",)
 
         parser.add_argument(
             "--exclude-label",
             dest="exclude_label",
-            action="append_const",
+            action="append",
+            type=str,
             nargs="+",
             help="Exclude all issues and PRs with the specified label",)
 
@@ -79,16 +87,15 @@ class VersionTwoConfig:
             "--publish-board",
             dest="publish_board",
             action="store_const",
-            help="The organization/board to publish (add) the collection of "
-                 "GitHub Issues and Pull Requests",)
+            help="The organization/board to publish (add) the collection of GitHub Issues and Pull Requests",)
 
         parsed_args = parser.parse_args()
 
+        self.include_user = parsed_args.include_user
         self.include_repository = parsed_args.include_repository
         self.include_organization_repository = parsed_args.include_organization_repository
-        self.include_user = parsed_args.include_user
         self.include_label = parsed_args.include_label
-        self.exclude_organization = parsed_args.exclude_org
+        self.exclude_organization = parsed_args.exclude_organization
         self.exclude_repository = parsed_args.exclude_repository
         self.exclude_organization_repository = parsed_args.exclude_organization_repository
         self.exclude_user = parsed_args.exclude_user
