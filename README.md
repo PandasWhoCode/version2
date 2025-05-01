@@ -21,6 +21,8 @@ The following items are required to run the program.
 Run `make install` inside the repo directory to configure the appropriate versions of dependencies.
 
 # How does it work?
+
+```mermaid
 %% A · System-Architecture Diagram (≤25 nodes)
 flowchart TD
     A[CLI Invocation] --> B{version2config.py<br/>Parse flags & env}
