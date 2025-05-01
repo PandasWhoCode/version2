@@ -13,7 +13,7 @@ class StaticSiteGenerator():
             'tasks': []
         }
 
-    def generate_site(self, data:list=None, teams:list[str]=None,output_file='./_site/index.html'):
+    def generate_site(self, data:list=None, teams:list[str]=None, output_file='./_site/index.html'):
         logging.info("Generating Static Site")
         env = Environment(loader=FileSystemLoader('templates'))
         template = env.get_template('kaban_board.html')
