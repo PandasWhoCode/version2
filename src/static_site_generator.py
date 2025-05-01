@@ -9,7 +9,7 @@ class StaticSiteGenerator():
         self.GENERATOR_DATA = {
             'title': 'Version2',
             'github_user': "",
-            'project(s)': "",
+            'project': "",
             'tasks': []
         }
 
@@ -25,7 +25,7 @@ class StaticSiteGenerator():
         self.GENERATOR_DATA["github_user"] = self.github_uname
 
         # Set the project(s)
-        self.GENERATOR_DATA["project(s)"] = ' '.join(projects) if projects is not None else ""
+        self.GENERATOR_DATA["project"] = ' '.join(projects) if projects is not None else ""
 
         # Extract unique statuses from the tasks list
         unique_statuses = sorted({task["status"] for task in self.GENERATOR_DATA["tasks"]})
