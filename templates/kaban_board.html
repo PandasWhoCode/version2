@@ -9,11 +9,18 @@
         body {
             background-color: #f8f9fa;
         }
+        .kanban-scroll-wrapper {
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
         .kanban-column {
             background-color: #fff;
             border-radius: 0.5rem;
             padding: 1rem;
             box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+            min-width: 400px;
+            max-width: 400px;
+            flex-shrink: 0;
         }
         .kanban-card {
             background-color: #e9ecef;
@@ -50,7 +57,9 @@
 
     <div class="container-fluid py-4">
         <!-- Kanban Board -->
-        <div class="row row-cols-1 row-cols-md-5 g-3">
+        <div class="kanban-scroll-wrapper">
+            <div class="d-flex flex-nowrap gap-3">
+        <!-- <div class="row row-cols-1 row-cols-md-5 g-3"> -->
             {% for status in statuses %}
         <div class="col">
             <div class="kanban-column">
@@ -97,6 +106,7 @@
             </div>
         </div>
         {% endfor %}
+        </div>
         </div>
     </div>
 
