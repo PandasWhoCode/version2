@@ -7,13 +7,13 @@ class StaticSiteGenerator():
 
     def __init__(self):
         self.GENERATOR_DATA = {
-            'title': 'Version Two',
+            'title': 'Version2',
             'github_user': "",
-            'team': "",
+            'project(s)': "",
             'tasks': []
         }
 
-    def generate_site(self, data:list=None, teams:list[str]=None, output_file='./_site/index.html'):
+    def generate_site(self, data:list=None, projects:list[str]=None, output_file='./_site/index.html'):
         logging.info("Generating Static Site")
         env = Environment(loader=FileSystemLoader('templates'))
         template = env.get_template('kaban_board.html')
@@ -24,8 +24,8 @@ class StaticSiteGenerator():
         self.github_uname = os.getenv("GITHUB_UNAME") if os.getenv("GITHUB_UNAME") else "Not logged in"
         self.GENERATOR_DATA["github_user"] = self.github_uname
 
-        # Set the team(s)
-        self.GENERATOR_DATA["team"] = ' '.join(teams) if teams is not None else ""
+        # Set the project(s)
+        self.GENERATOR_DATA["project(s)"] = ' '.join(projects) if projects is not None else ""
 
         # Extract unique statuses from the tasks list
         unique_statuses = sorted({task["status"] for task in self.GENERATOR_DATA["tasks"]})
