@@ -1,0 +1,61 @@
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+    working-directory: docs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675 # v4.1.1
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Task
+        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0
+        with:
+          version: '3.x'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: task install
+
+      - name: Build site
+        run: task build
+
+      - name: Check for issues
+        run: task check
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@c938dab2b6c37549315673194b29ba65ec1ee047 # v4.0.0
+        with:
+          path: docs/public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@4c3e4e352c418c1fbdecd32fe6b5665a75f97d8c # v4.0.0 

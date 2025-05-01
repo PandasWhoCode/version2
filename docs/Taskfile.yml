@@ -1,0 +1,91 @@
+version: '3'
+
+vars:
+  HUGO_ENV: production
+  NODE_ENV: production
+
+tasks:
+  install:
+    desc: Install npm dependencies
+    cmds:
+      - npm install
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules
+
+  check:deps:
+    desc: Check for outdated dependencies
+    cmds:
+      - npm outdated || true
+      - npx npm-check-updates
+
+  serve:
+    desc: Start Hugo development server
+    cmds:
+      - npm run serve
+    deps: [install]
+
+  build:
+    desc: Build the site for production
+    cmds:
+      - npm run build:production
+    deps: [install]
+    sources:
+      - content/**/*
+      - layouts/**/*
+      - static/**/*
+      - config.toml
+    generates:
+      - public/**/*
+
+  build:preview:
+    desc: Build the site for preview
+    cmds:
+      - npm run build:preview
+    deps: [install]
+    sources:
+      - content/**/*
+      - layouts/**/*
+      - static/**/*
+      - config.toml
+    generates:
+      - public/**/*
+
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - npm run clean
+      - rm -rf resources
+      - rm -rf public
+
+  check:
+    desc: Check for broken links
+    cmds:
+      - npm run check:links
+    deps: [build]
+
+  update:deps:
+    desc: Update dependencies
+    cmds:
+      - npm run update:dep
+      - npm run update:hugo
+      - npm run update:pkgs
+    sources:
+      - package.json
+    generates:
+      - package-lock.json
+
+  local:
+    desc: Run a command in local development mode
+    cmds:
+      - npm run local {{.CLI_ARGS}}
+    requires:
+      vars: [CLI_ARGS]
+    deps: [install]
+
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list

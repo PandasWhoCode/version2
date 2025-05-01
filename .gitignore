@@ -179,3 +179,8 @@ cython_debug/
 _site/*
 !_site/.gitkeep
 output.projects.json
+
+/docs/public/
+/docs/.task/
+/docs/node_modules/
+/docs/resources/_gen/
