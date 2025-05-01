@@ -12,10 +12,12 @@ The following dependencies are required to run the program:
   -  `brew install pyenv pyenv-virtualenv`
 - GitHub Command Line Interface (CLI) `gh`
   - `brew install gh`
+- The
 
 ## 💻 Setup
 - Authentication through `gh auth login`
 - Set the appropriate token permissions: `gh auth refresh --scopes read:project`
+  - Note: The team must be a member of the Project Board in order to view the issues on the board.
 - Run `make install` inside the repo directory to configure the appropriate versions of dependencies.
 
 ## 🛠 Usage
