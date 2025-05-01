@@ -20,6 +20,9 @@ class Version2Query:
     if not os.getenv("GITHUB_TOKEN"):
       raise ValueError("GITHUB_TOKEN environment variable is not set.")
 
+  def get_github_token(self) -> str:
+    return os.getenv("GITHUB_TOKEN")
+
   def get_github_orgs(self) -> list[str]:
     """Create a list of github orgs based on the authenticated user."""
     return [org["login"] for org in self.api.orgs.list_for_authenticated_user()]
@@ -47,7 +50,7 @@ class Version2Query:
       }
       """
 
-      headers:dict = {"Authorization": f"Bearer {get_github_token()}"}
+      headers:dict = {"Authorization": f"Bearer {self.get_github_token()}"}
       response = requests.post(
         "https://api.github.com/graphql",
         json={"query": query, "variables": {"login": org}},
@@ -186,7 +189,7 @@ def main():
   test_output_file:str = f"output.items.json"
   
   query = Version2Query(temp_dir=test_temp_dir, output_file=test_output_file)
-  if not query.process(teams)
+  if not query.process(teams):
     print("[red]Processing failed.[/red]")
     return
 
