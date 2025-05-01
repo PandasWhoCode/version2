@@ -16,7 +16,7 @@ The following dependencies are required to run the program:
 ## 💻 Setup
 - Authentication through `gh auth login`
 - Set the appropriate token permissions: `gh auth refresh --scopes read:project`
-  - Note: The team must be a member of the Project Board in order to view the issues on the board.
+  - Note: The team must have `read` permissions on the Project Board in order to view the issues on the board.
 - Set the `GITHUB_TOKEN` environment variable: `export GITHUB_TOKEN=$(gh auth token)`
 - Set the `GITHUB_UNAME` environment variable: `export GITHUB_UNAME=$(gh auth status | grep "(GITHUB_TOKEN)" | cut -d " " -f9)`
 - Run `make install` inside the repo directory to configure the appropriate versions of dependencies.
