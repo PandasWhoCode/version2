@@ -5,8 +5,7 @@ class VersionTwoConfig:
     def __init__(self):
         parser = argparse.ArgumentParser(
             prog='VersionTwo',
-            description="Render an HTML page from a collection of GitHub Issues and Pull Requests, "
-                        "NOTE: `--include-user GITHUB_USER_ID` is a required parameter",
+            description="Render an HTML page from a collection of GitHub Issues and Pull Requests"
         )
 
         parser.add_argument(
@@ -15,8 +14,7 @@ class VersionTwoConfig:
             action="append",
             type=str,
             nargs="+",
-            help="Include all issues and PRs for the provided user [Required Parameter]",
-            required=True,)
+            help="Include all issues and PRs for the provided user [Required Parameter]",)
 
         parser.add_argument(
             "--include-repository",
@@ -104,9 +102,9 @@ class VersionTwoConfig:
 
     def display_config(self):
         print("Configuration:")
+        print(f"Include User: {self.include_user}")
         print(f"Include Repository: {self.include_repository}")
         print(f"Include Organization/Repository: {self.include_organization_repository}")
-        print(f"Include User: {self.include_user}")
         print(f"Include Label: {self.include_label}")
         print(f"Exclude Organization: {self.exclude_organization}")
         print(f"Exclude Repository: {self.exclude_repository}")

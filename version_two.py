@@ -1,4 +1,4 @@
-from version_two_config import VersionTwoConfig
+from src.version_two_config import VersionTwoConfig
 
 
 def main():
