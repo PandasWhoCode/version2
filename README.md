@@ -34,6 +34,24 @@ Project board, which captures the issues in swim lanes. The Project board can on
 meaning users who work in more than one org do not have a single location to view all issues. This leads to fragmented
 planning and execution.
 
+# How does it work?
+
+```mermaid
+%% A · System-Architecture Diagram (≤25 nodes)
+flowchart TD
+    A[CLI Invocation] --> B{version2config.py<br/>Parse flags & env}
+    B --> C[Validated Config]
+    C --> D{version2query.py<br/>Token check}
+    D --> E[GraphQL call projectsV2]:::api
+    E --> F[gh project item-list]:::cli
+    F --> G[items *.json]
+    G --> H[Consolidate to output.items.json]
+    H --> I{static_site_generator.py<br/>Jinja2 render}
+    I --> J[_site/index.html]
+classDef api fill:#e3f2fd,stroke:#2196f3;
+classDef cli fill:#f1f8e9,stroke:#7cb342;
+```
+
 # Our Solution
 Our python script will query the GitHub API for all issues associated with the appropriate filters provided to the CLI
 tool. The output will be a static HTML page showing all issues in swim lanes. This provides a comprehensive overview
