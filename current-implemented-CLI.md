@@ -6,11 +6,11 @@
 - `temp-dir` - The temporary directory to write JSON response files
 
 - `include-team` - Include a team to the query
+- `include-user` - Include a user to the query
 
 
 ## To Be Implemented
 
-- `include-user` - Include a specific user to the query
 - `include-repository` - Include specific repo to the query
 - `include-organization` - Include specific org to a query
 - `include-organization-repository` - Include specific org/repo to the query
