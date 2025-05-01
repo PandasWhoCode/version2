@@ -2,7 +2,7 @@
 
 ## Currently Implemented
 
-- ``
+- `include-by-team` - Filter by team is implemented
 
 ## To Be Implemented
 

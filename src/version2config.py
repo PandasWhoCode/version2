@@ -24,8 +24,8 @@ class VersionTwoConfig:
             dest="output_file",
             action="store",
             type=str,
-            default="output.html",
-            help="The output file to write the json data to",)
+            default="output.projects.json",
+            help="The output file to write the json data to"
         )
 
         parser.add_argument(
@@ -34,7 +34,7 @@ class VersionTwoConfig:
           action="store",
           type=str,
           default="tmp.dir",
-          help="The temporary directory to store the json data files",)
+          help="The temporary directory to store the json data files",
         )
 
         parser.add_argument(
