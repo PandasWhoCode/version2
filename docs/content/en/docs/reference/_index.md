@@ -3,12 +3,12 @@ title: "Reference Documentation"
 linkTitle: "Reference"
 weight: 30
 description: >
-  Detailed technical reference for VersionTwo
+  Detailed technical reference for Version2
 ---
 
 # Reference Documentation
 
-This section contains detailed technical reference documentation for VersionTwo.
+This section contains detailed technical reference documentation for Version2.
 
 ## Available Reference Documentation
 
@@ -19,7 +19,7 @@ This section contains detailed technical reference documentation for VersionTwo.
 
 ## What you'll find here
 
-Our reference documentation provides comprehensive technical details about VersionTwo's features, APIs, and components.
+Our reference documentation provides comprehensive technical details about Version2's features, APIs, and components.
 
 ## API Reference
 

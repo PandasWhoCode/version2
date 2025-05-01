@@ -3,12 +3,12 @@ title: "Interface de Linha de Comando"
 linkTitle: "CLI"
 weight: 1
 description: >
-  Referência completa para comandos CLI do VersionTwo
+  Referência completa para comandos CLI do Version2
 ---
 
 # Interface de Linha de Comando
 
-A CLI do VersionTwo fornece um conjunto abrangente de comandos para gerenciar suas implantações do VersionTwo.
+A CLI do Version2 fornece um conjunto abrangente de comandos para gerenciar suas implantações do Version2.
 
 ## Comandos Básicos
 
@@ -28,7 +28,7 @@ version2 <comando> --help
 ### version2 init
 
 ```bash
-# Inicializar novo projeto VersionTwo
+# Inicializar novo projeto Version2
 version2 init
 
 # Inicializar com configuração específica

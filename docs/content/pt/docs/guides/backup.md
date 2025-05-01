@@ -3,16 +3,16 @@ title: "Guia de Backup"
 linkTitle: "Backup"
 weight: 6
 description: >
-  Como configurar e gerenciar backups para suas implantações VersionTwo
+  Como configurar e gerenciar backups para suas implantações Version2
 ---
 
 # Guia de Backup
 
-Este guia explica como configurar e gerenciar backups para suas implantações VersionTwo, garantindo a segurança dos dados e a recuperação de desastres.
+Este guia explica como configurar e gerenciar backups para suas implantações Version2, garantindo a segurança dos dados e a recuperação de desastres.
 
 ## Visão Geral do Backup
 
-O VersionTwo suporta vários tipos de backup:
+O Version2 suporta vários tipos de backup:
 
 1. Backups Completos
 2. Backups Incrementais
@@ -35,10 +35,10 @@ version2 config set backup.schedule "0 0 * * *"  # Diariamente à meia-noite
 ### Configuração de Armazenamento
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 storage:
   type: s3
-  bucket: versiontwo-backups
+  bucket: version2-backups
   region: us-west-2
   path: /backups
   retention: 30d
@@ -83,7 +83,7 @@ version2 config set backup.differential.retention 30d
 ### Backup de Banco de Dados
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 database:
   enabled: true
   type: postgresql
@@ -96,12 +96,12 @@ database:
 ### Backup do Sistema de Arquivos
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 filesystem:
   enabled: true
   paths:
-    - /var/versiontwo/data
-    - /var/versiontwo/config
+    - /var/version2/data
+    - /var/version2/config
   exclude:
     - "*.tmp"
     - "*.log"
@@ -111,13 +111,13 @@ filesystem:
 ### Backup de Configuração
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 config:
   enabled: true
   schedule: "0 3 * * *"  # Diariamente às 3h
   include:
-    - /etc/versiontwo
-    - ~/.versiontwo
+    - /etc/version2
+    - ~/.version2
   retention: 90d
 ```
 
@@ -160,10 +160,10 @@ version2 backup test-restore --id backup-123
 ### Armazenamento Local
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 storage:
   type: local
-  path: /var/backups/versiontwo
+  path: /var/backups/version2
   retention: 30d
   compression: true
   encryption: true
@@ -172,11 +172,11 @@ storage:
 ### Armazenamento em Nuvem
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 storage:
   type: s3
   provider: aws
-  bucket: versiontwo-backups
+  bucket: version2-backups
   region: us-west-2
   path: /backups
   retention: 30d
@@ -194,25 +194,25 @@ storage:
 ### Criptografia
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 security:
   encryption:
     enabled: true
     algorithm: aes-256-gcm
     key_rotation: 90d
   access:
-    iam_role: versiontwo-backup-role
+    iam_role: version2-backup-role
     kms_key: arn:aws:kms:region:account:key/key-id
 ```
 
 ### Controle de Acesso
 
 ```yaml
-# .versiontwo/backup.yaml
+# .version2/backup.yaml
 access:
   iam:
-    role: versiontwo-backup-role
-    policy: versiontwo-backup-policy
+    role: version2-backup-role
+    policy: version2-backup-policy
   encryption:
     kms_key: arn:aws:kms:region:account:key/key-id
 ```
@@ -232,7 +232,7 @@ version2 backup monitor
 ### Alertas de Backup
 
 ```yaml
-# .versiontwo/alerts.yaml
+# .version2/alerts.yaml
 backup:
   - name: backup_falhou
     condition: "backup.status == 'failed'"
@@ -267,5 +267,5 @@ Se você encontrar problemas com backup:
 
 1. Verifique o [Guia de Solução de Problemas](/tutorials/troubleshooting/)
 2. Revise os logs de backup com `version2 logs --type backup`
-3. Verifique os [Problemas no GitHub](https://github.com/versiontwo/cli/issues) para problemas conhecidos
+3. Verifique os [Problemas no GitHub](https://github.com/version2/cli/issues) para problemas conhecidos
 4. Entre em contato com o [Suporte](/support/) se precisar de ajuda adicional 

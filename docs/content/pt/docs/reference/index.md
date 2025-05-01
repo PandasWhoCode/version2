@@ -3,12 +3,12 @@ title: "Documentação de Referência"
 linkTitle: "Referência"
 weight: 30
 description: >
-  Referência técnica detalhada para o VersionTwo
+  Referência técnica detalhada para o Version2
 ---
 
 # Documentação de Referência
 
-Esta seção contém a documentação técnica detalhada de referência para o VersionTwo.
+Esta seção contém a documentação técnica detalhada de referência para o Version2.
 
 ## Documentação de Referência Disponível
 
@@ -25,7 +25,7 @@ Esta seção contém a documentação técnica detalhada de referência para o V
 
 ## Referência da API
 
-- [Visão Geral da API](/reference/api/) - Introdução à API do VersionTwo
+- [Visão Geral da API](/reference/api/) - Introdução à API do Version2
 - [Autenticação](/reference/api/auth/) - Métodos de autenticação da API
 - [Endpoints](/reference/api/endpoints/) - Endpoints disponíveis
 - [Requisição/Resposta](/reference/api/requests/) - Formatos de requisição e resposta
@@ -40,7 +40,7 @@ Esta seção contém a documentação técnica detalhada de referência para o V
 
 ## Arquitetura
 
-- [Arquitetura do Sistema](/reference/architecture/) - Visão geral da arquitetura do VersionTwo
+- [Arquitetura do Sistema](/reference/architecture/) - Visão geral da arquitetura do Version2
 - [Componentes](/reference/architecture/components/) - Componentes e interações do sistema
 - [Fluxo de Dados](/reference/architecture/data-flow/) - Fluxo e processamento de dados
 - [Modelo de Segurança](/reference/architecture/security/) - Arquitetura e modelo de segurança

@@ -6,7 +6,7 @@ description: >
   How-to guides for common tasks and workflows
 ---
 
-Welcome to the VersionTwo guides! These practical guides will help you accomplish specific tasks and implement common workflows.
+Welcome to the Version2 guides! These practical guides will help you accomplish specific tasks and implement common workflows.
 
 ## What you'll find here
 

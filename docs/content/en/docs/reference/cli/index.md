@@ -3,18 +3,18 @@ title: "CLI Reference"
 linkTitle: "CLI"
 weight: 2
 description: >
-  Complete reference for VersionTwo CLI commands and usage
+  Complete reference for Version2 CLI commands and usage
 ---
 
 # CLI Reference
 
-The VersionTwo CLI provides a command-line interface for managing your VersionTwo deployments.
+The Version2 CLI provides a command-line interface for managing your Version2 deployments.
 
 ## Basic Commands
 
 ### version2 init
 
-Initialize a new VersionTwo project in the current directory.
+Initialize a new Version2 project in the current directory.
 
 ```bash
 version2 init [project-name] [flags]
@@ -39,7 +39,7 @@ Flags:
 
 ### version2 project
 
-Manage VersionTwo projects.
+Manage Version2 projects.
 
 ```bash
 version2 project [command] [flags]
@@ -53,7 +53,7 @@ Commands:
 
 ### version2 workspace
 
-Manage VersionTwo workspaces.
+Manage Version2 workspaces.
 
 ```bash
 version2 workspace [command] [flags]
@@ -69,7 +69,7 @@ Commands:
 
 ### version2 config
 
-Manage VersionTwo configuration.
+Manage Version2 configuration.
 
 ```bash
 version2 config [command] [flags]
@@ -173,15 +173,15 @@ version2 auth [command] [flags]
 ```
 
 Commands:
-- `login`: Log in to VersionTwo
-- `logout`: Log out from VersionTwo
+- `login`: Log in to Version2
+- `logout`: Log out from Version2
 - `status`: Show authentication status
 
 ## Maintenance
 
 ### version2 update
 
-Update VersionTwo CLI to the latest version.
+Update Version2 CLI to the latest version.
 
 ```bash
 version2 update [flags]
@@ -205,7 +205,7 @@ Flags:
 
 ### version2 doctor
 
-Check VersionTwo installation for common issues.
+Check Version2 installation for common issues.
 
 ```bash
 version2 doctor [flags]

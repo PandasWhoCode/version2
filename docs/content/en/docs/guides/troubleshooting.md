@@ -3,12 +3,12 @@ title: "Troubleshooting Guide"
 linkTitle: "Troubleshooting"
 weight: 8
 description: >
-  How to diagnose and resolve common issues with VersionTwo
+  How to diagnose and resolve common issues with Version2
 ---
 
 # Troubleshooting Guide
 
-This guide provides solutions for common issues you might encounter while using VersionTwo.
+This guide provides solutions for common issues you might encounter while using Version2.
 
 ## Diagnostic Tools
 
@@ -211,7 +211,7 @@ version2 backup restore
 ### Error Logging
 
 ```yaml
-# .versiontwo/logging.yaml
+# .version2/logging.yaml
 error_logging:
   enabled: true
   level: error
@@ -232,11 +232,11 @@ error_logging:
 
 ### Support Options
 
-If you need help with VersionTwo, you have several options:
+If you need help with Version2, you have several options:
 
 1. Check our [Documentation](/docs/)
-2. Contact [Technical Support](https://versiontwo.com/support)
-3. Submit an issue on [GitHub](https://github.com/versiontwo/versiontwo/issues)
+2. Contact [Technical Support](https://version2.com/support)
+3. Submit an issue on [GitHub](https://github.com/version2/version2/issues)
 
 For enterprise customers, please use your dedicated support channel.
 
@@ -262,6 +262,6 @@ For enterprise customers, please use your dedicated support channel.
 If you need additional assistance:
 
 1. Check the Documentation](/docs/docs/)
-2. Search the [Knowledge Base](https://kb.versiontwo.com)
-3. Post on the [Community Forum](https://community.versiontwo.com)
+2. Search the [Knowledge Base](https://kb.version2.com)
+3. Post on the [Community Forum](https://community.version2.com)
 4. Contact [Support](/support/) for professional help 

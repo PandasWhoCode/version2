@@ -3,16 +3,16 @@ title: "Guia de Segurança"
 linkTitle: "Segurança"
 weight: 4
 description: >
-  Como proteger suas implantações e configurações do VersionTwo
+  Como proteger suas implantações e configurações do Version2
 ---
 
 # Guia de Segurança
 
-Este guia explica como proteger suas implantações e configurações do VersionTwo, seguindo as melhores práticas da indústria.
+Este guia explica como proteger suas implantações e configurações do Version2, seguindo as melhores práticas da indústria.
 
 ## Visão Geral de Segurança
 
-O VersionTwo implementa várias camadas de segurança:
+O Version2 implementa várias camadas de segurança:
 
 1. Autenticação e Autorização
 2. Criptografia de Dados

@@ -3,33 +3,33 @@ title: "Configuration Guide"
 linkTitle: "Configuration"
 weight: 2
 description: >
-  How to customize VersionTwo for your needs
+  How to customize Version2 for your needs
 ---
 
 # Configuration Guide
 
-This guide explains how to configure VersionTwo to match your workflow and requirements.
+This guide explains how to configure Version2 to match your workflow and requirements.
 
 ## Configuration Files
 
-VersionTwo uses the following configuration files:
+Version2 uses the following configuration files:
 
-- `~/.versiontwo/config.yaml` - Global configuration
-- `./versiontwo.yaml` - Project-specific configuration
-- `./.versiontwo/workspace.yaml` - Workspace-specific settings
+- `~/.version2/config.yaml` - Global configuration
+- `./version2.yaml` - Project-specific configuration
+- `./.version2/workspace.yaml` - Workspace-specific settings
 
 ## Global Configuration
 
 ### Basic Settings
 
 ```yaml
-# ~/.versiontwo/config.yaml
+# ~/.version2/config.yaml
 api:
   key: YOUR_API_KEY
-  endpoint: https://api.versiontwo.com/v1
+  endpoint: https://api.version2.com/v1
 
 workspace:
-  default: ~/versiontwo-projects
+  default: ~/version2-projects
   auto_create: true
 
 editor:
@@ -45,9 +45,9 @@ theme:
 
 | Setting | Description | Default |
 |---------|-------------|---------|
-| `api.key` | Your VersionTwo API key | - |
-| `api.endpoint` | API endpoint URL | https://api.versiontwo.com/v1 |
-| `workspace.default` | Default workspace path | ~/versiontwo-projects |
+| `api.key` | Your Version2 API key | - |
+| `api.endpoint` | API endpoint URL | https://api.version2.com/v1 |
+| `workspace.default` | Default workspace path | ~/version2-projects |
 | `workspace.auto_create` | Auto-create workspace if missing | true |
 | `editor.name` | Default editor | vscode |
 | `editor.path` | Path to editor executable | - |
@@ -59,7 +59,7 @@ theme:
 ### Basic Project Setup
 
 ```yaml
-# versiontwo.yaml
+# version2.yaml
 name: my-project
 version: 1.0.0
 
@@ -91,7 +91,7 @@ settings:
 ### Basic Workspace Setup
 
 ```yaml
-# .versiontwo/workspace.yaml
+# .version2/workspace.yaml
 name: development
 environment: dev
 
@@ -158,18 +158,18 @@ version2 config reset --workspace
 
 ## Environment Variables
 
-VersionTwo also supports configuration through environment variables:
+Version2 also supports configuration through environment variables:
 
 ```bash
-export VERSIONTWO_API_KEY=your_api_key
-export VERSIONTWO_WORKSPACE=~/custom-workspace
-export VERSIONTWO_EDITOR=vim
+export VERSION2_API_KEY=your_api_key
+export VERSION2_WORKSPACE=~/custom-workspace
+export VERSION2_EDITOR=vim
 ```
 
 ## Next Steps
 
 - Deployment Guide](/docs/guides/deployment/) - Learn how to deploy your configured projects
-- Security Guide](/docs/guides/security/) - Secure your VersionTwo configuration
+- Security Guide](/docs/guides/security/) - Secure your Version2 configuration
 - Reference Documentation](/docs/reference/configuration/) - Detailed configuration reference
 
 ## Troubleshooting
@@ -178,5 +178,5 @@ If you encounter configuration issues:
 
 1. Check the Troubleshooting Guide](/docs/tutorials/troubleshooting/)
 2. Verify your configuration with `version2 config validate`
-3. Check the [GitHub Issues](https://github.com/versiontwo/cli/issues) for known problems
+3. Check the [GitHub Issues](https://github.com/version2/cli/issues) for known problems
 4. Contact [Support](/support/) if you need additional help 

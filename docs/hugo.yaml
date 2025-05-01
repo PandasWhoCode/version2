@@ -1,5 +1,5 @@
-baseURL: https://docs.versiontwo.com
-title: VersionTwo Documentation
+baseURL: https://docs.version2.com
+title: Version2 Documentation
 
 # cSpell:ignore goldmark github hugo readingtime docsy subdir lastmod pygments linenos catmullrom norsk gu
 
@@ -45,15 +45,15 @@ imaging:
 languages:
   en:
     languageName: English
-    title: VersionTwo Documentation
+    title: Version2 Documentation
     params:
-      description: Complete documentation for VersionTwo platform
+      description: Complete documentation for Version2 platform
   pt:
     languageName: Português
     contentDir: content/pt
-    title: Documentação VersionTwo
+    title: Documentação Version2
     params:
-      description: Documentação completa da plataforma VersionTwo
+      description: Documentação completa da plataforma Version2
       time_format_default: 02/01/2006
 
 markup:
@@ -86,10 +86,10 @@ params:
     # set taxonomyPageHeader = [] to hide taxonomies on the page headers
     taxonomyPageHeader: [tags, categories]
 
-  privacy_policy: https://versiontwo.com/privacy
+  privacy_policy: https://version2.com/privacy
 
   # First one is picked as the Twitter card image if not set on page.
-  images: [images/versiontwo-logo.png]
+  images: [images/version2-logo.png]
 
   # Menu title if your navbar has a versions selector to access old versions of your site.
   version_menu: Versions
@@ -103,13 +103,13 @@ params:
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
   # point people to the main doc site.
-  url_latest_version: https://docs.versiontwo.com
+  url_latest_version: https://docs.version2.com
 
   # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-  github_repo: https://github.com/versiontwo/docs
+  github_repo: https://github.com/version2/docs
 
   # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-  github_project_repo: https://github.com/versiontwo/versiontwo
+  github_project_repo: https://github.com/version2/version2
 
   # Specify a value here if your content directory is not in your repo's root directory
   github_subdir: "docs"
@@ -125,7 +125,7 @@ params:
   prism_syntax_highlighting: true
 
   copyright:
-    authors: VersionTwo Team | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+    authors: Version2 Team | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
     from_year: 2024
 
   # User interface configuration
@@ -146,9 +146,9 @@ params:
       enable: true
       # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
       'yes': >-
-        Glad to hear it! Please <a href="https://github.com/versiontwo/docs/issues/new">tell us how we can improve</a>.
+        Glad to hear it! Please <a href="https://github.com/version2/docs/issues/new">tell us how we can improve</a>.
       'no': >-
-        Sorry to hear that. Please <a href="https://github.com/versiontwo/docs/issues/new">tell us how we can improve</a>.
+        Sorry to hear that. Please <a href="https://github.com/version2/docs/issues/new">tell us how we can improve</a>.
 
     # Adds a reading time to the top of each doc.
     readingtime:
@@ -158,25 +158,25 @@ params:
     # End user relevant links. These will show up on left side of footer
     user:
       - name: Support
-        url: https://versiontwo.com/support
+        url: https://version2.com/support
         icon: fa fa-life-ring
         desc: Get help from our support team
       - name: Twitter
-        url: https://twitter.com/versiontwo
+        url: https://twitter.com/version2
         icon: fab fa-twitter
         desc: Follow us on Twitter for updates
       - name: Stack Overflow
-        url: https://stackoverflow.com/questions/tagged/versiontwo
+        url: https://stackoverflow.com/questions/tagged/version2
         icon: fab fa-stack-overflow
         desc: Ask and answer questions
     # Developer relevant links. These will show up on right side of footer
     developer:
       - name: GitHub
-        url: https://github.com/versiontwo
+        url: https://github.com/version2
         icon: fab fa-github
-        desc: Contribute to VersionTwo
+        desc: Contribute to Version2
       - name: Discord
-        url: https://discord.gg/versiontwo
+        url: https://discord.gg/version2
         icon: fab fa-discord
         desc: Join our developer community
 
