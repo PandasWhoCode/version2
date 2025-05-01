@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 import logging 
 
+
 class StaticSiteGenerator():
 
     def __init__(self):
