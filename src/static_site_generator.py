@@ -12,7 +12,7 @@ def generate_site(data=None, output_file='./_site/index.html'):
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('kaban_board.html')
 
-    GENERATOR_DATA["tasks"] = data
+    GENERATOR_DATA["tasks"] = data if data is not None else []
 
     # Extract unique statuses from the tasks list
     unique_statuses = sorted({task["status"] for task in GENERATOR_DATA["tasks"]})
