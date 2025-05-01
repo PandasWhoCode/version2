@@ -2,11 +2,9 @@
 
 ## Currently Implemented
 
-
-- `include-team` - Include a team to the query
-- `output-file` - Define the filename and location of the output file
 - `output-file` - Define the filename and location of the output file
 - `temp-dir` - The temporary directory to write JSON response files
+
 - `include-team` - Include a team to the query
 
 

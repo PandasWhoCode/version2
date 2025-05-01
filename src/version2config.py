@@ -55,22 +55,6 @@ class VersionTwoConfig:
         )
 
         parser.add_argument(
-          "--include-team",
-          dest="include_team",
-          action="append",
-          type=str,
-          help="Include provided teams in the output"
-        )
-
-        parser.add_argument(
-          "--exclude-team",
-          dest="exclude_team",
-          action="append",
-          type=str,
-          help="Exclude provided teams in the output"
-        )
-
-        parser.add_argument(
             "--include-repository",
             dest="include_repository",
             action="append",
@@ -164,7 +148,6 @@ class VersionTwoConfig:
         self.temp_dir = parsed_args.temp_dir
         self.include_team = parsed_args.include_team
         self.include_user = parsed_args.include_user
-        self.include_team = parsed_args.include_team
         self.include_repository = parsed_args.include_repository
         self.include_organization = parsed_args.include_organization
         self.include_organization_repository = parsed_args.include_organization_repository
@@ -175,7 +158,6 @@ class VersionTwoConfig:
         self.exclude_organization = parsed_args.exclude_organization
         self.exclude_organization_repository = parsed_args.exclude_organization_repository
         self.exclude_label = parsed_args.exclude_label
-        self.exclude_team = parsed_args.exclude_team
         self.publish_board = parsed_args.publish_board
 
     def init_logger(self):
@@ -200,5 +182,4 @@ class VersionTwoConfig:
         logging.info(f"Exclude Organization: {self.exclude_organization}")
         logging.info(f"Exclude Organization/Repository: {self.exclude_organization_repository}")
         logging.info(f"Exclude Label: {self.exclude_label}")
-        logging.info(f"Exclude Team: {self.exclude_team}")
         logging.info(f"Publish Board: {self.publish_board}")
