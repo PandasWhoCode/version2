@@ -222,12 +222,12 @@ class Version2Query:
 # This main method is used for testing out the version2query class
 def main():
   """The primary method for the version2query.py script."""
-  teams:list = input("Enter team name(s) to filter projects: ").split(",")
+  project_names:list = input("Enter team name(s) to filter projects: ").split(",")
   test_temp_dir:Path = Path(f"tmp.dir")
   test_output_file:str = f"output.items.json"
   
   query = Version2Query(temp_dir=test_temp_dir, output_file=test_output_file)
-  query.filters.include_teams = teams
+  query.filters.include_projects = project_names
   if not query.process():
     print("[red]Processing failed.[/red]")
     raise RunTimeError("Processing failed.")
