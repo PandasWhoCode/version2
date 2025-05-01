@@ -20,3 +20,17 @@ The following items are required to run the program.
 
 Run `make install` inside the repo directory to configure the appropriate versions of dependencies.
 
+# How does it work?
+%% A · System-Architecture Diagram (≤25 nodes)
+flowchart TD
+    A[CLI Invocation] --> B{version2config.py<br/>Parse flags & env}
+    B --> C[Validated Config]
+    C --> D{version2query.py<br/>Token check}
+    D --> E[GraphQL call projectsV2]:::api
+    E --> F[gh project item-list]:::cli
+    F --> G[items *.json]
+    G --> H[Consolidate to output.items.json]
+    H --> I{static_site_generator.py<br/>Jinja2 render}
+    I --> J[_site/index.html]
+classDef api fill:#e3f2fd,stroke:#2196f3;
+classDef cli fill:#f1f8e9,stroke:#7cb342;
