@@ -7,7 +7,7 @@ import requests
 from pathlib import Path
 from ghapi.all import GhApi
 from rich import print
-from queryFilter import QueryFilter
+from .queryFilter import QueryFilter
 
 class Version2Query:
   def __init__(self, temp_dir:str="tmp.dir", output_file:str="output.items.json"):
@@ -145,7 +145,7 @@ class Version2Query:
     if self.temp_dir.exists():
       try:
         shutil.rmtree(self.temp_dir)
-        print(f"[bold red]Cleaned up temporary files in {self.temp_dir}[/bold red]")
+        print(f"[bold purple]Cleaned up temporary files in {self.temp_dir}[/bold purple]")
       except Exception as e:
         print(f"[red]Error cleaning up temporary files: {e}[/red]")
         rv = False
@@ -156,9 +156,6 @@ class Version2Query:
 
   def process(self) -> bool:
     """Main processing method for the Version2Query class."""
-    if not teams:
-      print("[red]No team names provided. Exiting...[/red]")
-      return False
 
     if self.temp_dir.exists():
       cleanup()
@@ -173,10 +170,14 @@ class Version2Query:
       print("[red]No projects found. Exiting...[/red]")
       return False
 
-    filtered_projects = self.filter_projects_by_team(all_projects, teams)
-    if not filtered_projects:
-      print("[red]No projects found matching the team names. Exiting...[/red]")
-      return False
+    filtered_projects = all_projects
+    if self.filters.include_teams is not None:
+      teams = self.filters.include_teams
+      filtered_projects_by_teams = self.filter_projects_by_team(all_projects, teams)
+      if not filtered_projects_by_teams:
+        print("[red]No projects found matching the team names. Exiting...[/red]")
+        return False
+      filtered_projects = filtered_projects_by_teams
 
     if not self.fetch_project_items(filtered_projects):
       print("[red]Failed to fetch project items. Exiting...[/red]")

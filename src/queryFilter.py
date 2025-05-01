@@ -37,50 +37,86 @@ class QueryFilter:
   @property
   def include_teams(self) -> list[str]:
     return self._include_teams
+  @include_teams.setter
+  def include_teams(self, value:list[str]) -> None:
+    self._include_teams=value
 
   @property
   def include_users(self) -> list[str]:
     return self._include_users
+  @include_users.setter
+  def include_users(self, value:list[str]) -> None:
+    self._include_users=value
 
   @property
   def include_repositories(self) -> list[str]:
     return self._include_repositories
+  @include_repositories.setter
+  def include_repositories(self, value:list[str]) -> None:
+    self._include_repositories=value
 
   @property
   def include_organizations(self) -> list[str]:
     return self._include_organizations
+  @include_organizations.setter
+  def include_organizations(self, value:list[str]) -> None:
+    self._include_organizations=value
 
   @property
   def include_organization_repositories(self) -> list[str]:
     return self._include_organization_repositories
+  @include_organization_repositories.setter
+  def include_organization_repositories(self, value:list[str]) -> None:
+    self._include_organization_repositories=value
 
   @property
   def include_labels(self) -> list[str]:
     return self._include_labels
+  @include_labels.setter
+  def include_labels(self, value:list[str]) -> None:
+    self._include_labels=value
 
   @property
   def exclude_teams(self) -> list[str]:
     return self._exclude_teams
+  @exclude_teams.setter
+  def exclude_teams(self, value:list[str]) -> None:
+    self._exclude_teams=value
 
   @property
   def exclude_users(self) -> list[str]:
     return self._exclude_users
+  @exclude_users.setter
+  def exclude_users(self, value:list[str]) -> None:
+    self._exclude_users=value
 
   @property
   def exclude_repositories(self) -> list[str]:
     return self._exclude_repositories
+  @exclude_repositories.setter
+  def exclude_repositories(self, value:list[str]) -> None:
+    self._exclude_repositories=value
 
   @property
   def exclude_organizations(self) -> list[str]:
     return self._exclude_organizations
+  @exclude_organizations.setter
+  def exclude_organizations(self, value:list[str]) -> None:
+    self._exclude_organizations=value
 
   @property
   def exclude_organization_repositories(self) -> list[str]:
     return self._exclude_organization_repositories
+  @exclude_organization_repositories.setter
+  def exclude_organization_repositories(self, value:list[str]) -> None:
+    self._exclude_organization_repositories=value
 
   @property
   def exclude_label(self) -> list[str]:
     return self._exclude_label
+  @exclude_label.setter
+  def exclude_label(self, value:list[str]) -> None:
+    self._exclude_label=value
 
   def print_filters(self) -> None:
     """Print the filters for debugging purposes."""
