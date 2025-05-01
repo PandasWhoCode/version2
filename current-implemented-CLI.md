@@ -2,7 +2,8 @@
 
 ## Currently Implemented
 
-- None
+- `include-team` - Include a team to the query
+- `output-file` - Define the filename and location of the output file
 
 ## To Be Implemented
 
