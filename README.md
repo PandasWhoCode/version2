@@ -12,7 +12,6 @@ The following dependencies are required to run the program:
   -  `brew install pyenv pyenv-virtualenv`
 - GitHub Command Line Interface (CLI) `gh`
   - `brew install gh`
-- The
 
 ## 💻 Setup
 - Authentication through `gh auth login`
