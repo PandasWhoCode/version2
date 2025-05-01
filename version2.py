@@ -1,5 +1,5 @@
 from src.version2config import VersionTwoConfig
-from commons.static_site_generator import generate_site
+from src.static_site_generator import generate_site
 
 
 def main():
