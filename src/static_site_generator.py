@@ -1,5 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
-import logging 
+import logging
+import os
 
 
 class StaticSiteGenerator():
@@ -7,17 +8,24 @@ class StaticSiteGenerator():
     def __init__(self):
         self.GENERATOR_DATA = {
             'title': 'Version Two',
-            'github_user': 'octocat',
-            'team': 'Platform Engineering',
+            'github_user': "",
+            'team': "",
             'tasks': []
         }
 
-    def generate_site(self, data=None, output_file='./_site/index.html'):
+    def generate_site(self, data:list=None, teams:list[str]=None,output_file='./_site/index.html'):
         logging.info("Generating Static Site")
         env = Environment(loader=FileSystemLoader('templates'))
         template = env.get_template('kaban_board.html')
 
         self.GENERATOR_DATA["tasks"] = data if data is not None else []
+
+        # Set the github user name
+        self.github_uname = os.getenv("GITHUB_UNAME") if os.getenv("GITHUB_UNAME") else "Not logged in"
+        self.GENERATOR_DATA["github_user"] = self.github_uname
+
+        # Set the team(s)
+        self.GENERATOR_DATA["team"] = ' '.join(teams) if teams is not None else ""
 
         # Extract unique statuses from the tasks list
         unique_statuses = sorted({task["status"] for task in self.GENERATOR_DATA["tasks"]})
