@@ -8,8 +8,5 @@ def main():
 
     generate_site()
 
-
-
-
 if __name__ == "__main__":
     main()
