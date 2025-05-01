@@ -230,17 +230,15 @@ error_logging:
 - [Guia de Configuração](/guides/configuration/)
 - [Guia de Segurança](/guides/security/)
 
-### Suporte da Comunidade
+### Opções de Suporte
 
-- [Problemas no GitHub](https://github.com/versiontwo/cli/issues)
-- [Fórum da Comunidade](https://community.versiontwo.com)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/versiontwo)
+Se você precisar de ajuda com o VersionTwo, você tem várias opções:
 
-### Suporte Profissional
+1. Consulte nossa [Documentação](/docs/)
+2. Entre em contato com o [Suporte Técnico](https://versiontwo.com/support)
+3. Abra uma issue no [GitHub](https://github.com/versiontwo/versiontwo/issues)
 
-- [Portal de Suporte](https://support.versiontwo.com)
-- [Base de Conhecimento](https://kb.versiontwo.com)
-- [Contato de Suporte](/support/)
+Para clientes enterprise, utilize seu canal de suporte dedicado.
 
 ## Melhores Práticas
 

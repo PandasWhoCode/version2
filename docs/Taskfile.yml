@@ -24,6 +24,7 @@ tasks:
   serve:
     desc: Start Hugo development server
     cmds:
+      - task: build
       - npm run serve
     deps: [install]
 
@@ -31,7 +32,7 @@ tasks:
     desc: Build the site for production
     cmds:
       - npm run build:production
-    deps: [install]
+    deps: [install, clean]
     sources:
       - content/**/*
       - layouts/**/*
@@ -57,8 +58,15 @@ tasks:
     desc: Clean build artifacts
     cmds:
       - npm run clean
-      - rm -rf resources
-      - rm -rf public
+      - task: clean:cache
+
+  clean:cache:
+    desc: Clean Hugo cache
+    cmds:
+      - rm -Rf .hugo_build.lock
+      - rm -Rf .hugo_cache
+      - rm -Rf .hugo_build
+      - rm -Rf .hugo_working_dir
 
   check:
     desc: Check for broken links
