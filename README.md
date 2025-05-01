@@ -1,10 +1,10 @@
-![App icon](VersionTwo/images/FullSizeIcon.png)
+![App icon](images/FullSizeIcon.png)
 
 # VersionTwo
 Hackathon project: CLI tool to generate static planning view of issues for better team planning
 
 # Problem we are solving
- Github projects users are unable to easily associate issues across organizations with a project and particularly find having to manually add issues to the project board itself as a time consuming unnecessarily difficult task.
+GitHub projects users are unable to easily associate issues across organizations with a project and particularly find having to manually add issues to the project board itself as a time consuming unnecessarily difficult task.
 
 We propose improving this interface by adding a simple HTTP page with an interactive Kanban which is able to aggregate a user provided selection of repos, projects, organizations and display them in a filterable way.
 
