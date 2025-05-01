@@ -15,20 +15,37 @@ data = {
     'team': 'Platform Engineering',
     'tasks': {
         'Backlog': [
-            {'title': 'Research competitors', 'description': 'Analyze feature set'},
-            {'title': 'Set up project repo', 'description': 'Initialize GitHub repo'},
         ],
         'New': [
-            {'title': 'Design wireframes', 'description': 'Homepage + Dashboard'},
+            {
+                "assignees": [
+                    "coolAssignee"
+                ],
+                "content": {
+                    "body": "https://dummy_url/test#L42\n\nRename from `X` to `Y`",
+                    "number": 241,
+                    "repository": "pandas/coolrepo",
+                    "title": "cool title",
+                    "type": "Issue",
+                    "url": "https://github.com/pandas/coolrepo/issues/241"
+                },
+                "id": "PVTI_lADOBgkjhkjhjjh",
+                "labels": [
+                    "Bug"
+                ],
+                "linked pull requests": [
+                    "https://github.com/pandas/coolrepo/pull/242"
+                ],
+                "repository": "https://github.com/pandas/coolrepo",
+                "status": "Done",
+                "title": "Cool Pandas Task"
+            }
         ],
         'In-Progress': [
-            {'title': 'Implement auth', 'description': 'Login + Register'},
         ],
         'Blocked': [
-            {'title': 'API integration', 'description': 'Waiting for backend team'},
         ],
         'Done': [
-            {'title': 'Project kickoff', 'description': 'Team intro & planning'},
         ]
     }
 }
