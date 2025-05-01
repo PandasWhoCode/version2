@@ -50,7 +50,6 @@ class VersionTwoConfig:
             dest="include_user",
             action="append",
             type=str,
-            nargs="+",
             help="Include all issues and PRs for the provided user [Required Parameter]"
         )
 

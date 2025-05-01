@@ -88,6 +88,31 @@ class Version2Query:
       print(f"[green]Found {len(matching_projects)} matching projects for team '{team}'[/green]")
     return filtered_projects
 
+  def filter_items_by_user(self) -> None:
+    """Filter items by user."""
+
+    filtered_items:list[dict] = []
+
+    # pull the data out of output.projects.json and write to that file again
+    with open(self.output_file) as f:
+      items = json.load(f)
+      for item in items:
+        for user in self.filters.include_users:
+          if user in item.get("assignees", []):
+            filtered_items.append(item)
+            break # avoid appending the item multiple times if it matches multiple users.
+
+    # move self.output_file to output.items.json.tmp
+    tmp_file = self.output_file + ".tmp"
+
+    # write the new output_file with the filter_items_by_user
+    with open(self.output_file, "w") as f:
+      json.dump(filtered_items, f, indent=2)
+
+    # remove the tmp_file
+    if Path(tmp_file).exists():
+      os.remove(tmp_file)
+
   def fetch_project_items(self, projects:list[dict]) -> bool:
     """Fetch all items on each project."""
 
@@ -158,7 +183,7 @@ class Version2Query:
     """Main processing method for the Version2Query class."""
 
     if self.temp_dir.exists():
-      cleanup()
+      self.cleanup()
 
     orgs = self.get_github_orgs()
     if not orgs:
@@ -170,6 +195,7 @@ class Version2Query:
       print("[red]No projects found. Exiting...[/red]")
       return False
 
+    # filter by team names
     filtered_projects = all_projects
     if self.filters.include_teams is not None:
       teams = self.filters.include_teams
@@ -187,6 +213,10 @@ class Version2Query:
       print("[red]Failed to consolidate items. Exiting...[/red]")
       return False
 
+    # filter items by user
+    if self.filters.include_users is not None:
+      self.filter_items_by_user()
+
     return self.cleanup()
 
 # This main method is used for testing out the version2query class
@@ -197,9 +227,10 @@ def main():
   test_output_file:str = f"output.items.json"
   
   query = Version2Query(temp_dir=test_temp_dir, output_file=test_output_file)
-  if not query.process(teams):
+  query.filters.include_teams = teams
+  if not query.process():
     print("[red]Processing failed.[/red]")
-    return
+    raise RunTimeError("Processing failed.")
 
 if __name__ == "__main__":
   main()
