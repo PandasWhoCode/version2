@@ -51,14 +51,14 @@
         <!-- Kanban Board -->
         <div class="row row-cols-1 row-cols-md-5 g-3">
             {% set counter = 0 %}
-            {% for status in ["Backlog", "New", "In-Progress", "Blocked", "Done"] %}
+            {% for status in statuses %}
             <div class="col">
                 <div class="kanban-column">
                     <div class="kanban-header text-primary text-center">{{ status }}</div>
-                    {% for task in tasks[status] %}
+                    {% for task in tasks if task.status == status %}
                     
                     <div class="kanban-card">
-                        {% set card_id = "card-" ~ counter %}
+                        {% set card_id = "card-" ~ status | lower | replace(" ", "-") ~ "-" ~ counter %}
                         {% set counter = counter + 1 %}
                         <div class="d-flex align-items-start gap-2">
                             <a 
