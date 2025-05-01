@@ -86,11 +86,11 @@ def projects_filtered_by_team(project_list:list[dict], teams:list[str]) -> list[
   return filtered_projects
 
 def get_items_for_projects(projects:list[dict]) -> bool:
-   """Fetch all items on each project."""
+  """Fetch all items on each project."""
    
-   rv:bool = True
-   TEMP_DIR.mkdir(exist_ok=True)
-   for project in projects:
+  rv:bool = True
+  TEMP_DIR.mkdir(exist_ok=True)
+  for project in projects:
     org    = project["org"]
     number = project["number"]
     title  = project["title"]
@@ -109,7 +109,7 @@ def get_items_for_projects(projects:list[dict]) -> bool:
         rv = False
         continue
     
-    return rv
+  return rv
 
 def consolidate_items() -> bool:
   """Consolidate all items into a single JSON file."""
