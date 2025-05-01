@@ -1,6 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 
-def render_kanban_board(data, output_file='./_site/index.html'):
+def generate_site(data, output_file='./_site/index.html'):
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('kaban_board.html')
     output = template.render(data)
@@ -51,4 +51,4 @@ data = {
 }
 
 
-render_kanban_board(data)
+generate_site(data)
