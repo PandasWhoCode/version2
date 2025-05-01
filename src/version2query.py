@@ -133,7 +133,7 @@ def consolidate_items() -> bool:
     print(f"[red]Error writing consolidated items to {OUTPUT_FILE}: {e}[/red]")
     rv = False
 
-  if OUTPUT_FILE.exists():
+  if Path(OUTPUT_FILE).exists():
     print(f"[bold green]Saved all items to {OUTPUT_FILE}[/bold green]")
   return rv
 
