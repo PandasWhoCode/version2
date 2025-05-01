@@ -20,6 +20,24 @@ class VersionTwoConfig:
         )
 
         parser.add_argument(
+            "--output-file",
+            dest="output_file",
+            action="store",
+            type=str,
+            default="output.html",
+            help="The output file to write the json data to",)
+        )
+
+        parser.add_argument(
+          "--temp-dir",
+          dest="temp_dir",
+          action="store",
+          type=str,
+          default="tmp.dir",
+          help="The temporary directory to store the json data files",)
+        )
+
+        parser.add_argument(
             "--include-user",
             dest="include_user",
             action="append",
@@ -110,7 +128,8 @@ class VersionTwoConfig:
         self.exclude_user = parsed_args.exclude_user
         self.exclude_label = parsed_args.exclude_label
         self.publish_board = parsed_args.publish_board
-
+        self.output_file = parsed_args.output_file
+        self.temp_dir = parsed_args.temp_dir
 
     def init_logger(self):
         logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
@@ -120,6 +139,8 @@ class VersionTwoConfig:
 
     def display_config(self):
         logging.info("Configuration:")
+        logging.info(f"Output File: {self.output_file}")
+        logging.info(f"Temporary Directory: {self.temp_dir}")
         logging.info(f"Include User: {self.include_user}")
         logging.info(f"Include Repository: {self.include_repository}")
         logging.info(f"Include Organization/Repository: {self.include_organization_repository}")
