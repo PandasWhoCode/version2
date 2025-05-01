@@ -1,8 +1,9 @@
 from src.version2config import VersionTwoConfig
 from src.version2query import Version2Query
-from src.static_site_generator import generate_site
+from src.static_site_generator import StaticSiteGenerator
 from pathlib import Path
 import json
+import logging
 
 def main():
     config:VersionTwoConfig = VersionTwoConfig()
@@ -12,10 +13,12 @@ def main():
     teams:list[str] = config.include_team
 
     query:VersionTwoQuery = Version2Query(temp_dir=temp_dir, output_file=output_file)
+    ss_gen = StaticSiteGenerator()
 
     # Generate output_file or die
+    logging.info("Querying GitHub API...")
     if not query.process(teams):
-      print("Failed to process query.")
+      logging.error("Failed to process query.")
       return
 
     # Get json object
@@ -23,7 +26,7 @@ def main():
     with open(output_file, 'r') as f:
       data = json.load(f)
 
-    generate_site(data=data)
+    ss_gen.generate_site(data=data)
 
 if __name__ == "__main__":
     main()
