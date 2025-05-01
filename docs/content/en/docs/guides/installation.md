@@ -88,8 +88,9 @@ The `doctor` command will check your installation and report any issues.
 
 ## Next Steps
 
-- Configuration Guide](/docs/guides/configuration/) - Learn how to customize VersionTwo for your needs
-- Getting Started Tutorial](/docs/tutorials/getting-started/) - Start using VersionTwo with our step-by-step tutorial
+- [Configuration Guide](/docs/guides/configuration/) - Configure your VersionTwo installation
+- [Security Guide](/docs/guides/security/) - Secure your VersionTwo deployment
+- [Overview](/docs/overview/) - Learn more about VersionTwo features
 
 ## Troubleshooting
 

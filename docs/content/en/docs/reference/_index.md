@@ -1,12 +1,21 @@
 ---
-title: "Reference"
+title: "Reference Documentation"
 linkTitle: "Reference"
-weight: 40
+weight: 30
 description: >
-  Technical reference documentation for VersionTwo
+  Detailed technical reference for VersionTwo
 ---
 
-Welcome to the VersionTwo reference documentation! Here you'll find detailed technical information about the platform.
+# Reference Documentation
+
+This section contains detailed technical reference documentation for VersionTwo.
+
+## Available Reference Documentation
+
+- [Configuration](/docs/reference/configuration/) - Configuration options and settings
+- [CLI Commands](/docs/reference/cli/) - Command-line interface reference
+- [Architecture](/docs/reference/architecture/) - System architecture and components
+- [Security](/docs/reference/security/) - Security features and best practices
 
 ## What you'll find here
 
@@ -15,7 +24,6 @@ Our reference documentation provides comprehensive technical details about Versi
 ## API Reference
 
 - [REST API](/docs/reference/api/)
-- [CLI Commands](/docs/reference/cli/)
 - [Configuration Options](/docs/reference/configuration/)
 
 ## Architecture

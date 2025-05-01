@@ -17,7 +17,7 @@ Welcome to the VersionTwo documentation! This site provides technical documentat
 
 The documentation is organized into several sections:
 
-* [**Getting Started**](/docs/tutorials/getting-started/): Get up and running quickly
+* [**Overview**](/docs/overview/): Learn about VersionTwo
 * [**Guides**](/docs/guides/): How-to guides for specific tasks
 * [**Reference**](/docs/reference/): Detailed technical reference
 * [**About**](/about/): Learn more about VersionTwo

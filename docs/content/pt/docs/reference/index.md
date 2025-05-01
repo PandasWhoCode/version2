@@ -1,14 +1,21 @@
 ---
 title: "Documentação de Referência"
 linkTitle: "Referência"
-weight: 1
+weight: 30
 description: >
-  Documentação de referência completa para o VersionTwo
+  Referência técnica detalhada para o VersionTwo
 ---
 
 # Documentação de Referência
 
-Esta seção fornece documentação de referência detalhada para todos os componentes, comandos e configurações do VersionTwo.
+Esta seção contém a documentação técnica detalhada de referência para o VersionTwo.
+
+## Documentação de Referência Disponível
+
+- [Configuração](/docs/reference/configuration/) - Opções e configurações
+- [Comandos CLI](/docs/reference/cli/) - Referência da interface de linha de comando
+- [Arquitetura](/docs/reference/architecture/) - Arquitetura do sistema e componentes
+- [Segurança](/docs/reference/security/) - Recursos de segurança e melhores práticas
 
 ## Comandos CLI
 
