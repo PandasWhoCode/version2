@@ -85,7 +85,7 @@ class Version2Query:
       matching_projects:list[dict] = [p for p in project_list if pname.lower() in p["title"].lower()]
 
       filtered_projects.extend(matching_projects)
-      print(f"[green]Found {len(matching_projects)} matching projects for team '{pname}'[/green]")
+      print(f"[green]Found {len(matching_projects)} matching projects for project '{pname}'[/green]")
     return filtered_projects
 
   def filter_items_by_user(self) -> None:
