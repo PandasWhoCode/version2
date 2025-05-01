@@ -13,18 +13,20 @@ def main():
 
     # Get parameters for filters
     filters:dict[str,list[str]] = {
-      "include_teams":                     config.include_team,
+      "include_projects":                  config.include_project,
       "include_users":                     config.include_user,
       "include_repositories":              config.include_repository,
       "include_organizations":             config.include_organization,
       "include_organization_repositories": config.include_organization_repository,
       "include_labels":                    config.include_label,
-      "exclude_teams":                     config.exclude_team,
+      "include_teams":                     config.include_team,
+      "exclude_projects":                  config.exclude_project,
       "exclude_users":                     config.exclude_user,
       "exclude_repositories":              config.exclude_repository,
       "exclude_organizations":             config.exclude_organization,
       "exclude_organization_repositories": config.exclude_organization_repository,
-      "exclude_label":                     config.exclude_label
+      "exclude_label":                     config.exclude_label,
+      "exclude_teams":                     config.exclude_team
     }
 
     query:VersionTwoQuery = Version2Query(temp_dir=temp_dir, output_file=output_file)

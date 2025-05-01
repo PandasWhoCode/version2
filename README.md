@@ -24,7 +24,7 @@ The following dependencies are required to run the program:
 ## 🛠 Usage
 To run the main script, change to the current directory of the script, then run:
 
-`python version2.py --output-file "<filename.json>" --temp-dir "<temp.dir>" --include-team <teamname>`
+`python version2.py --output-file "<filename.json>" --temp-dir "<temp.dir>" --include-project <project name>`
 
 See the `--help` menu for full list of filter functionality.
 
