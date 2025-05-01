@@ -12,11 +12,11 @@ TEMP_DIR = Path(f"tmp.dir")
 OUTPUT_FILE = f"output.items.json"
 
 def get_github_token():
-    """Get GitHub token from environment variable."""
-    token = os.getenv("GITHUB_TOKEN")
-    if not token:
-        raise ValueError("GITHUB_TOKEN environment variable is not set.")
-    return token
+  """Get GitHub token from environment variable."""
+  token = os.getenv("GITHUB_TOKEN")
+  if not token:
+    raise ValueError("GITHUB_TOKEN environment variable is not set.")
+  return token
 
 def get_github_orgs():
   """Create a list of github orgs based on the authenticated user."""
@@ -35,41 +35,41 @@ def get_all_projects(orgs:list[str]) -> list[dict]:
   # Query projects for each org
   all_projects:list[dict] = []
   for org in orgs:
-      print(f"[bold blue]Fetching projects for org: {org}[/bold blue]")
+    print(f"[bold blue]Fetching projects for org: {org}[/bold blue]")
 
-      # the graphql query needed to pull in all the data from gh api
-      query:str = """
-      query($login: String!) {
-        organization(login: $login) {
-          projectsV2(first: 100) {
-            nodes {
-              id
-              number
-              title
-            }
+    # the graphql query needed to pull in all the data from gh api
+    query:str = """
+    query($login: String!) {
+      organization(login: $login) {
+        projectsV2(first: 100) {
+          nodes {
+            id
+            number
+            title
           }
         }
       }
-      """
+    }
+    """
 
-      headers:dict = {"Authorization": f"Bearer {get_github_token()}"}
-      response = requests.post(
-          "https://api.github.com/graphql",
-          json={"query": query, "variables": {"login": org}},
-          headers=headers
-      )
+    headers:dict = {"Authorization": f"Bearer {get_github_token()}"}
+    response = requests.post(
+      "https://api.github.com/graphql",
+      json={"query": query, "variables": {"login": org}},
+      headers=headers
+    )
 
-      result = response.json()
-      projects:list[dict] = [
-        {
-          "org": org,
-          "number": project["number"],
-          "title": project["title"]
-        }
-        for project in result.get("data", {}).get("organization", {}).get("projectsV2", {}).get("nodes", [])
-      ]
+    result = response.json()
+    projects:list[dict] = [
+      {
+        "org": org,
+        "number": project["number"],
+        "title": project["title"]
+      }
+      for project in result.get("data", {}).get("organization", {}).get("projectsV2", {}).get("nodes", [])
+    ]
 
-      all_projects.extend(projects)
+    all_projects.extend(projects)
   return all_projects
 
 def projects_filtered_by_team(project_list:list[dict], teams:list[str]) -> list[dict]:
