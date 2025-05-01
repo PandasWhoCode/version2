@@ -59,56 +59,65 @@
         <!-- Kanban Board -->
         <div class="kanban-scroll-wrapper">
             <div class="d-flex flex-nowrap gap-3">
-        <!-- <div class="row row-cols-1 row-cols-md-5 g-3"> -->
+            <!-- <div class="row row-cols-1 row-cols-md-5 g-3"> -->
             {% for status in statuses %}
-        <div class="col">
-            <div class="kanban-column">
-                <div class="kanban-header text-primary text-center">{{ status }}</div>
+            <div class="col">
+                <div class="kanban-column">
+                    <div class="kanban-header text-primary text-center">{{ status }}</div>
 
-                {% for task in tasks if task.status == status %}
-                {% set card_id = "card-" ~ status | lower | replace(" ", "-") ~ "-" ~ loop.index0 %}
+                    {% for task in tasks if task.status == status %}
+                    {% set card_id = "card-" ~ status | lower | replace(" ", "-") ~ "-" ~ loop.index0 %}
 
-                <div class="kanban-card">
-                    <div class="d-flex flex-column align-items-start gap-2">
-                        <a 
-                            class="text-dark text-decoration-none fw-bold flex-grow-1"  
-                            data-bs-toggle="collapse" 
-                            href="#{{ card_id }}" 
-                            role="button" 
-                            aria-expanded="false" 
-                            aria-controls="{{ card_id }}"
-                        >
-                        🟢 {{ task.title }}<a 
-                        href="{{ task.content.url }}" 
-                        target="_blank" 
-                        class="fs-8 text-primary text-decoration-none">
-                            (#{{ task.content.number }})</a>
-                        </a>
-                    </div>
-                    <div class="collapse mt-2" id="{{ card_id }}">
-                        <div>
-                            <small>
-                                <strong>📦 Repository:</strong>
-                                <a href="{{ task.repository }}" target="_blank">
-                                    {{ task.content.repository }}
-                                </a>
-                            </small>
+                    <div class="kanban-card">
+                        <div class="d-flex flex-column align-items-start gap-2">
+                            <a 
+                                href="{{ task.content.url }}" 
+                                target="_blank" 
+                                class="fs-8 text-primary text-decoration-none"
+                            >
+                                🟢 #{{ task.content.number }}
+                            </a>
+                            <a 
+                                class="text-dark text-decoration-none fw-bold flex-grow-1"  
+                                data-bs-toggle="collapse" 
+                                href="#{{ card_id }}" 
+                                role="button" 
+                                aria-expanded="false" 
+                                aria-controls="{{ card_id }}"
+                            >
+                                {{ task.title }}
+                            </a>
                         </div>
-                        <div><small><strong>👤 Assignee:</strong> {{ task.assignees | join(', ') }}</small></div>
-                        <div><small><strong>🏷️ Labels:</strong> {{ task.labels | join(', ') }}</small></div>
-                        <div><small><strong>📌 Status:</strong> {{ task.status }}</small></div>
-                        <div class="text-center">
-                            <a href="{{ task.content.url }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">View Issue</a>
+                        <div class="collapse mt-2" id="{{ card_id }}">
+                            <div>
+                                <small>
+                                    <strong>📦 Repository:</strong>
+                                    <a href="{{ task.repository }}" target="_blank" class="repo-name">
+                                        {{ task.content.repository }}
+                                    </a>
+                                </small>
+                            </div>
+                            <div>
+                                <small>
+                                    <strong>👤 Assignee:</strong>
+                                    <span class="assignee">{{ task.assignees | join(', ') }}</span>
+                                </small>
+                            </div>
+                            <div>
+                                <small>
+                                    <strong>🏷️ Labels:</strong>
+                                    <span class="labels">{{ task.labels | join(', ') }}</span>
+                                </small>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
         {% endfor %}
         </div>
-        </div>
     </div>
+</div>
 
 
 
@@ -126,10 +135,22 @@
                 // Iterate over all the cards
                 kanbanCards.forEach(function(card) {
                     // Get the card's title, issue number, and other text content to check if it matches the query
-                    const title = card.querySelector('.d-flex .text-dark').textContent.toLowerCase();
-                    const issueNumber = card.querySelector('.d-flex .text-primary').textContent.toLowerCase();
-                    const repository = card.querySelector('.text-muted') ? card.querySelector('.text-muted').textContent.toLowerCase() : '';
-                    const assignee = card.querySelector('.d-flex .assignee') ? card.querySelector('.d-flex .assignee').textContent.toLowerCase() : '';
+                    const titleElement = card.querySelector('.text-dark');
+                    const issueNumberElement = card.querySelector('.text-primary');
+                    const repositoryElement = card.querySelector('.repo-name');
+                    const assigneeElement = card.querySelector('.assignee');
+                    const labelsElement = card.querySelector('.labels');
+
+                    const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+                    const issueNumber = issueNumberElement ? issueNumberElement.textContent.toLowerCase() : '';
+                    const repository = repositoryElement ? repositoryElement.textContent.toLowerCase() : '';
+                    const assignee = assigneeElement ? assigneeElement.textContent.toLowerCase() : '';
+                    const labels = labelsElement ? labelsElement.textContent.toLowerCase() : '';
+
+                    // console.log("Title: " + title)
+                    // console.log("Issue: " + issueNumber)
+                    // console.log("Repository: " + repository)
+                    // console.log("Assignee: " + assignee)
 
                     // Check if the query matches any part of the task (title, issue number, repository, assignee)
                     const matches = title.includes(query) || issueNumber.includes(query) || repository.includes(query) || assignee.includes(query);
