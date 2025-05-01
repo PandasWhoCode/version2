@@ -7,18 +7,25 @@ import requests
 from pathlib import Path
 from ghapi.all import GhApi
 from rich import print
+from queryFilter import QueryFilter
 
 class Version2Query:
-  def __init__(self, temp_dir:str = "tmp.dir", output_file:str="output.items.json"):
+  def __init__(self, temp_dir:str="tmp.dir", output_file:str="output.items.json"):
     self.temp_dir:Path = Path(temp_dir)
     self.output_file:str = output_file
     self.api:GhApi = GhApi()
     self._validate_token()
+    self.filters:QueryFilter = QueryFilter()
 
   def _validate_token(self) -> None:
     """Validate Github token exists in the environment."""
     if not os.getenv("GITHUB_TOKEN"):
       raise ValueError("GITHUB_TOKEN environment variable is not set.")
+
+  def set_filters(self, filters:dict) -> None:
+    """Set filters for the query."""
+    self.filters.set_filters_from_dict(filters)
+    self.filters.print_filters()
 
   def get_github_token(self) -> str:
     return os.getenv("GITHUB_TOKEN")
@@ -147,7 +154,7 @@ class Version2Query:
 
     return rv
 
-  def process(self, teams:list[str] = None) -> bool:
+  def process(self) -> bool:
     """Main processing method for the Version2Query class."""
     if not teams:
       print("[red]No team names provided. Exiting...[/red]")
@@ -181,7 +188,7 @@ class Version2Query:
 
     return self.cleanup()
 
-
+# This main method is used for testing out the version2query class
 def main():
   """The primary method for the version2query.py script."""
   teams:list = input("Enter team name(s) to filter projects: ").split(",")
