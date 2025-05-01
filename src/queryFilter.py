@@ -5,6 +5,8 @@ This module defines the QueryFilter class, which is used to filter GitHub projec
 It is used in the Version2Query class to filter projects based on user input.
 """
 
+from rich import print
+
 class QueryFilter:
   def __init__(
     self,
