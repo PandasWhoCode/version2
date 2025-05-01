@@ -41,88 +41,94 @@
             <!-- <div class="col-md-4">
                 <p><strong>Team:</strong> {{ team }}</p>
             </div> -->
-            <div class="col-md-4">
-                <input type="text" id="searchBox" class="form-control" placeholder="Search tasks...">
+            <div class="search-bar col-md-4">
+                <input type="text" id="search-input" class="form-control" placeholder="Search tasks..." />
             </div>
+            
         </div>
     </div>
 
     <div class="container-fluid py-4">
         <!-- Kanban Board -->
         <div class="row row-cols-1 row-cols-md-5 g-3">
-            {% set counter = 0 %}
             {% for status in statuses %}
-            <div class="col">
-                <div class="kanban-column">
-                    <div class="kanban-header text-primary text-center">{{ status }}</div>
-                    {% for task in tasks if task.status == status %}
-                    
-                    <div class="kanban-card">
-                        {% set card_id = "card-" ~ status | lower | replace(" ", "-") ~ "-" ~ counter %}
-                        {% set counter = counter + 1 %}
-                        <div class="d-flex align-items-start gap-2">
-                            <a 
-                                href="{{ task.content.url }}" 
-                                target="_blank" 
-                                class="text-primary text-decoration-none fw-bold"
-                            >
-                            🟢 #{{ task.content.number }}
-                            </a>
-                            <a 
-                                class="text-dark text-decoration-none fw-bold flex-grow-1" 
-                                data-bs-toggle="collapse" 
-                                href="#{{ card_id }}" 
-                                role="button" 
-                                aria-expanded="false" 
-                                aria-controls="{{ card_id }}"
-                            >
-                                {{ task.title }}
-                            </a>
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header text-primary text-center">{{ status }}</div>
+
+                {% for task in tasks if task.status == status %}
+                {% set card_id = "card-" ~ status | lower | replace(" ", "-") ~ "-" ~ loop.index0 %}
+
+                <div class="kanban-card">
+                    <div class="d-flex flex-column align-items-start gap-2">
+                        <a 
+                            class="text-dark text-decoration-none fw-bold flex-grow-1"  
+                            data-bs-toggle="collapse" 
+                            href="#{{ card_id }}" 
+                            role="button" 
+                            aria-expanded="false" 
+                            aria-controls="{{ card_id }}"
+                        >
+                        🟢 {{ task.title }}<a 
+                        href="{{ task.content.url }}" 
+                        target="_blank" 
+                        class="fs-8 text-primary text-decoration-none">
+                            (#{{ task.content.number }})</a>
+                        </a>
+                    </div>
+                    <div class="collapse mt-2" id="{{ card_id }}">
+                        <div>
+                            <small>
+                                <strong>📦 Repository:</strong>
+                                <a href="{{ task.repository }}" target="_blank">
+                                    {{ task.content.repository }}
+                                </a>
+                            </small>
                         </div>
-                        <div class="collapse mt-2" id="{{ card_id }}">
-                            <!-- <div><small><strong>Issue #:</strong> {{ task.content.number }}</small></div> -->
-                            <div>
-                                <small>
-                                    <strong>📦 Repository:</strong>
-                                    <a href="{{ task.repository }}" target="_blank">
-                                        {{ task.content.repository }}
-                                    </a>
-                                </small>
-                            </div>
-                            <div><small><strong>👤 Assignee:</strong> {{ task.assignees | join(', ') }}</small></div>
-                            <div><small><strong>🏷️ Labels:</strong> {{ task.labels | join(', ') }}</small></div>
-                            <div><small><strong>📌 Status:</strong> {{ task.status }}</small></div>
-                            <div class="text-center">
-                                <a href="{{ task.content.url }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">View Issue</a>
-                            </div>
+                        <div><small><strong>👤 Assignee:</strong> {{ task.assignees | join(', ') }}</small></div>
+                        <div><small><strong>🏷️ Labels:</strong> {{ task.labels | join(', ') }}</small></div>
+                        <div><small><strong>📌 Status:</strong> {{ task.status }}</small></div>
+                        <div class="text-center">
+                            <a href="{{ task.content.url }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">View Issue</a>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
         </div>
     </div>
 
 
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.querySelector("#searchBox");
-    
-            searchInput.addEventListener("input", function () {
-                const searchTerm = this.value.toLowerCase();
-                const cards = document.querySelectorAll(".kanban-card");
-    
-                cards.forEach(card => {
-                    const title = card.querySelector("strong").textContent.toLowerCase();
-                    const description = card.querySelector("small").textContent.toLowerCase();
-    
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        card.style.display = "block";
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the search input and all Kanban cards
+            const searchInput = document.getElementById('search-input');
+            const kanbanCards = document.querySelectorAll('.kanban-card');
+            
+            // Add an event listener for the search input
+            searchInput.addEventListener('input', function() {
+                const query = searchInput.value.toLowerCase(); // Get the lowercase version of the query
+                
+                // Iterate over all the cards
+                kanbanCards.forEach(function(card) {
+                    // Get the card's title, issue number, and other text content to check if it matches the query
+                    const title = card.querySelector('.d-flex .text-dark').textContent.toLowerCase();
+                    const issueNumber = card.querySelector('.d-flex .text-primary').textContent.toLowerCase();
+                    const repository = card.querySelector('.text-muted') ? card.querySelector('.text-muted').textContent.toLowerCase() : '';
+                    const assignee = card.querySelector('.d-flex .assignee') ? card.querySelector('.d-flex .assignee').textContent.toLowerCase() : '';
+
+                    // Check if the query matches any part of the task (title, issue number, repository, assignee)
+                    const matches = title.includes(query) || issueNumber.includes(query) || repository.includes(query) || assignee.includes(query);
+                    
+                    // Show or hide the card based on the search query match
+                    if (matches) {
+                        card.style.display = 'block'; // Show the card
                     } else {
-                        card.style.display = "none";
+                        card.style.display = 'none'; // Hide the card
                     }
                 });
             });
