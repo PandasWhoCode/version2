@@ -30,8 +30,12 @@ class StaticSiteGenerator():
         self.GENERATOR_DATA["project"] = ' '.join(projects) if projects is not None else ""
 
         # Extract unique statuses from the tasks list
-        unique_statuses = sorted({task["status"] for task in self.GENERATOR_DATA["tasks"]})
-        
+        statuses:list[str] = []
+        for task in self.GENERATOR_DATA["tasks"]:
+            if "status" in task:
+                statuses.append(task["status"])
+        unique_statuses:list[str] = sorted(set(statuses))
+
         # Add statuses to the data dictionary
         data_with_statuses = {**self.GENERATOR_DATA, "statuses": unique_statuses}
         
