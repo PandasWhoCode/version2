@@ -8,7 +8,7 @@ import os
 class StaticSiteGenerator():
 
     def __init__(self):
-        self.GENERATOR_DATA = {
+        self.GENERATOR_DATA:dict = {
             'title': 'Version2',
             'github_user': "",
             'project': "",
@@ -29,12 +29,15 @@ class StaticSiteGenerator():
         # Set the project(s)
         self.GENERATOR_DATA["project"] = ' '.join(projects) if projects is not None else ""
 
-        # Extract unique statuses from the tasks list
-        statuses:list[str] = []
+        # Ensure all tasks have a status
+        statuses:set[str] = set()
         for task in self.GENERATOR_DATA["tasks"]:
-            if "status" in task:
-                statuses.append(task["status"])
-        unique_statuses:list[str] = sorted(set(statuses))
+            if "status" not in task:
+              task["status"] = "None"
+            statuses.add(task["status"])
+
+        # Extract unique statuses from the tasks list
+        unique_statuses:list[str] = sorted(statuses)
 
         # Add statuses to the data dictionary
         data_with_statuses = {**self.GENERATOR_DATA, "statuses": unique_statuses}
