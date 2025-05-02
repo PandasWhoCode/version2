@@ -1,4 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
+from rich import print
+import json
 import logging
 import os
 
@@ -13,7 +15,7 @@ class StaticSiteGenerator():
             'tasks': []
         }
 
-    def generate_site(self, data:list=None, projects:list[str]=None, output_file='./_site/index.html'):
+    def generate_site(self, data:list=None, projects:list[str]=None, output_file='./_site/index.html') -> None:
         logging.info("Generating Static Site")
         env = Environment(loader=FileSystemLoader('templates'))
         template = env.get_template('kaban_board.html')
@@ -40,3 +42,20 @@ class StaticSiteGenerator():
             f.write(output)
 
         logging.info("Static Site Generated @ ./_site/index.html")
+
+def main():
+    ss_gen = StaticSiteGenerator()
+    data_file:str = input("Enter the path to the json file with data: ")
+    if not os.path.exists(data_file):
+        print(f"[bold red]File {data_file} does not exist.[/bold red]")
+        return
+
+    data:list = []
+    with open(data_file, 'r') as f:
+        data = json.load(f)
+
+    ss_gen.generate_site(data=data)
+
+if __name__ == "__main__":
+    main()
+
