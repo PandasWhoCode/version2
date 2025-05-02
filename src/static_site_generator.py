@@ -33,7 +33,9 @@ class StaticSiteGenerator():
         statuses:set[str] = set()
         for task in self.GENERATOR_DATA["tasks"]:
             if "status" not in task:
-              task["status"] = "None"
+              task["status"] = "NONE"
+            else:
+              task["status"] = task["status"].upper()
             statuses.add(task["status"])
 
         # Extract unique statuses from the tasks list
