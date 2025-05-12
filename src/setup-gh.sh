@@ -17,7 +17,7 @@ fi
 
 # Check if the GITHUB_TOKEN environment variable is already set
 set_gh_token() {
-    # If not set, set the scopes for the token and set the enviornment variable
+    # If not set, set the scopes for the token and set the environment variable
     gh auth refresh --scopes read:project
 
     # Set the GITHUB_TOKEN environment variable
