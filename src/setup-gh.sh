@@ -24,7 +24,6 @@ set_gh_token() {
     export GITHUB_TOKEN=$(gh auth token)
 }
 
-
 configure_gh_env() {
     if [ -n "${GITHUB_TOKEN}" ]; then
         echo "GITHUB_TOKEN needs to be unset to update the token scopes."
