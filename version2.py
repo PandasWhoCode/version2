@@ -46,7 +46,7 @@ def main():
     with open(output_file, 'r') as f:
       data = json.load(f)
 
-    ss_gen.generate_site(data=data, projects=filters["include_projects"])
+    ss_gen.generate_site(data=data, filter_done=config.filter_done, projects=filters["include_projects"])
 
 if __name__ == "__main__":
     main()
