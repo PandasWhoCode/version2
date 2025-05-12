@@ -26,7 +26,7 @@ The following dependencies are required to run the program:
     source src/setup-gh.sh # follow the prompts
   ```
 
-  - Sets the appropriate token scopes: `read`.
+  - Sets the appropriate token scopes: `read: project`.
     - Note: The team must have `read` permissions on the Project Board in order to view the issues on the board.
   - Sets the `GITHUB_TOKEN` environment variable.
   - Sets the `GITHUB_UNAME` environment variable.
