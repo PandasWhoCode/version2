@@ -31,6 +31,7 @@ class StaticSiteGenerator():
 
         # Ensure all tasks have a status
         statuses:set[str] = set()
+        print(len(self.GENERATOR_DATA["tasks"]))
         for task in self.GENERATOR_DATA["tasks"]:
             if "status" not in task:
               task["status"] = "NONE"
