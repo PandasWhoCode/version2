@@ -15,7 +15,7 @@ class StaticSiteGenerator():
             'tasks': []
         }
 
-    def generate_site(self, data:list=None, projects:list[str]=None, output_file='./_site/index.html') -> None:
+    def generate_site(self, data:list=None, filter_done:bool=False, projects:list[str]=None, output_file='./_site/index.html') -> None:
         logging.info("Generating Static Site")
         env = Environment(loader=FileSystemLoader('templates'))
         template = env.get_template('kaban_board.html')
@@ -34,9 +34,14 @@ class StaticSiteGenerator():
         for task in self.GENERATOR_DATA["tasks"]:
             if "status" not in task:
               task["status"] = "NONE"
+            elif task["status"].upper() == "DONE" and filter_done == True:
+                # remove the task from the list
+                self.GENERATOR_DATA["tasks"].remove(task)
+                continue
             else:
               task["status"] = task["status"].upper()
             statuses.add(task["status"])
+        print(f"[bold cyan]Adding {len(self.GENERATOR_DATA["tasks"])} tasks to the site[/bold cyan]")
 
         # Extract unique statuses from the tasks list
         unique_statuses:list[str] = sorted(statuses)

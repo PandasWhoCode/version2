@@ -7,6 +7,7 @@ import requests
 from pathlib import Path
 from ghapi.all import GhApi
 from rich import print
+from time import sleep
 from .queryFilter import QueryFilter
 
 class Version2Query:
@@ -130,7 +131,9 @@ class Version2Query:
       # use os.system instead of subprocess.run or subprocess.popen to avoid creating a new
       # process space where we would need to copy environment variables into it (possibly
       # exposing things like GH_TOKEN or other environment variables)
-      os.system( f'gh project item-list --owner "{org}" {number} --format json > "{out_path}"')
+      # The default limit on the gh project item-list command is 30 items. We need to update
+      # the limit to 1000 to get all items in the project.
+      os.system( f'gh project item-list --owner "{org}" {number} --limit 1000 --format json > "{out_path}"')
 
       if not out_path.exists():
           print(f"[red]Failed to fetch items for project: {title} (Org: {org}, Project: {number})[/red]")
@@ -148,6 +151,7 @@ class Version2Query:
         with open(file) as f:
           data = json.load(f)
           items = data.get("items", [])
+          print(f"[green]Found {len(items)} items in {file}[/green]")
           all_items.extend(items)
     except Exception as e:
       print(f"[red]Error consolidating items: {e}[/red]")

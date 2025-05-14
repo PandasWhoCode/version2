@@ -38,6 +38,13 @@ class VersionTwoConfig:
         )
 
         parser.add_argument(
+            "--filter-done",
+            dest="filter_done",
+            action="store_true",
+            help="Filter out all issues and PRs that are marked as done"
+        )
+
+        parser.add_argument(
             "--include-project",
             dest="include_project",
             action="append",
@@ -176,6 +183,7 @@ class VersionTwoConfig:
         self.exclude_label = parsed_args.exclude_label
         self.publish_board = parsed_args.publish_board
         self.exclude_team = parsed_args.exclude_team
+        self.filter_done = parsed_args.filter_done if parsed_args.filter_done else False
 
     def init_logger(self):
         logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
@@ -187,6 +195,7 @@ class VersionTwoConfig:
         logging.info("Configuration:")
         logging.info(f"Output File: {self.output_file}")
         logging.info(f"Temporary Directory: {self.temp_dir}")
+        logging.info(f"Filter Done: {self.filter_done}")
         logging.info(f"Include Project: {self.include_project}")
         logging.info(f"Include User: {self.include_user}")
         logging.info(f"Include Repository: {self.include_repository}")
